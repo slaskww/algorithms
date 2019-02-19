@@ -1,4 +1,4 @@
-package org.sda.algorithms;
+package org.sda.algorithms.remider;
 
 
 import java.util.*;
