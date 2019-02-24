@@ -22,15 +22,27 @@ public class Reminder {
 
         String apple = "apple";
         String secondApple = "apple";
-        String orange = "oragne";
+        String orange = "orange";
 
+        // dodajemy alementy do set
         fruitsSet.add(apple);
         fruitsSet.add(secondApple);
         fruitsSet.add(orange);
 
+        // dodajemy elementy do listy
         fruitsList.add(apple);
         fruitsList.add(secondApple);
         fruitsList.add(orange);
+
+        /*
+        fruitsList
+                .stream()
+                .forEach(System.out::println);
+
+        fruitsSet
+                .stream()
+                .forEach(System.out::println);
+         */
 
         System.out.println("Printing using stream");
         printUsingStream(fruitsList);
@@ -51,6 +63,10 @@ public class Reminder {
         System.out.println("//");
     }
 
+    // metoda przyjmuje kolekcje
+    // lista jest kolekcja
+    // set tez jest kolekcja
+    // w ciele metody mamy dostep do zmiennych ktore przekzalismy
     private static void printUsingStream(Collection<String> fruitsCollection) {
         fruitsCollection
                 .stream()
@@ -62,7 +78,9 @@ public class Reminder {
      * Napisz metodę która wykorzysta for
      */
     public static void printUsingFor(List<String> list) {
+        for(int i=0; i < list.size(); i++){
 
+        }
     }
 
     public static void printUsingForEach(Set<String> set) {

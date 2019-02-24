@@ -1,8 +1,6 @@
 package org.sda.algorithms.remider;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Zoo {
 
@@ -36,5 +34,20 @@ public class Zoo {
 
         // TODO
         // Let's animal talk!
+        for (Animal animal : animals) {
+            System.out.println("What does the animal say?");
+            animal.sound();
+        }
+
+        System.out.println("iterator");
+        Iterator<Animal> animalIterator = animals.iterator();
+        while (animalIterator.hasNext()){
+            Animal animal = animalIterator.next();
+            animal.sound();
+        }
+
+        System.out.println(animalIterator.hasNext());
+        animalIterator.next();
+
     }
 }
