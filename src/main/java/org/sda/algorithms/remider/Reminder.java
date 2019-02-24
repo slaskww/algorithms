@@ -22,7 +22,7 @@ public class Reminder {
 
         String apple = "apple";
         String secondApple = "apple";
-        String orange = "orange";
+        String orange = "oragne";
 
         // dodajemy alementy do set
         fruitsSet.add(apple);
@@ -78,14 +78,17 @@ public class Reminder {
      * Napisz metodę która wykorzysta for
      */
     public static void printUsingFor(List<String> list) {
-        for(int i=0; i < list.size(); i++){
 
+        for (int i = 0; i < list.size()  ; i++) {
+
+            System.out.println(list.get(i));
         }
+
     }
 
     public static void printUsingForEach(Set<String> set) {
         for(String s: set){
-
+            System.out.println(s);
         }
     }
 
@@ -96,7 +99,10 @@ public class Reminder {
     public static void printUsingIterator(Collection<String> fruitsCollection){
         Iterator fruitIterator = fruitsCollection.iterator();
 
+        while (fruitIterator.hasNext())
+            fruitIterator.next();
+        }
 
     }
 
-}
+
