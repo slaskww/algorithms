@@ -118,6 +118,7 @@ public class StackTest {
 
         // THEN
         // Sprawdzamy czy rozmiar stacka jest równy 0
+
         assertThat(stack.size()).isEqualTo(0);
     }
 
