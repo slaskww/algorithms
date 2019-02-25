@@ -31,9 +31,6 @@ public class Stack {
 
         */
 
-        // rozmiar jest zawsze o jeden większy niż ostatni index
-        // jeśli wrzuciliśmy coś pod index = 0 to rozmiar wynosi 1
-
         if(isFull()){
             System.out.println("Przekroczyłeś rozmiar stosu. Element nie zostanie dodany");
         } else {
@@ -41,14 +38,25 @@ public class Stack {
             size++;
         }
 
+        // rozmiar jest zawsze o jeden większy niż ostatni index
+        // jeśli wrzuciliśmy coś pod index = 0 to rozmiar wynosi 1
     }
 
     public Object pop(){
-        return null;
+
+        if(isEmpty()){
+            System.out.println("Stos pusty");
+            return null;
+        } else {
+            Object o = objectOnStack[size - 1]; //sciagamy ostatni element, index jest o 1 mniejszy niz rozmiar
+            objectOnStack[size - 1] = null;
+            size--;
+            return o;
+        }
     }
 
     public Object peek(){
-        return null;
+        return objectOnStack[size - 1];
     }
 
     public boolean isFull(){
