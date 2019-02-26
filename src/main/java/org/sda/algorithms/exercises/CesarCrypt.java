@@ -45,6 +45,6 @@ public class CesarCrypt {
     }
 
     private boolean exceedRange(byte cByte){
-        return (cByte < SMALL_A && cByte > CAPITAL_Z) || cByte > SMALL_Z;
+        return cByte < CAPITAL_A || (cByte < SMALL_A && cByte > CAPITAL_Z) || cByte > SMALL_Z;
     }
 }

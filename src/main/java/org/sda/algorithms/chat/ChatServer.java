@@ -17,13 +17,10 @@ public class ChatServer {
     private ServerSocket serverSocket;
     private ArrayList<Socket> clientList;
 
-    public ChatServer() {
-        try {
-            serverSocket = new ServerSocket(port);
-            serverSocket.setReuseAddress(true);
-        } catch (IOException e) {
-            System.out.println(e.getStackTrace());
-        }
+    public ChatServer() throws IOException {
+        serverSocket = new ServerSocket(port);
+        serverSocket.setReuseAddress(true);
+
         clientList = new ArrayList<Socket>();
     }
 
