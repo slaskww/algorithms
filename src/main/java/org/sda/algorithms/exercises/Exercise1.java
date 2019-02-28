@@ -46,6 +46,14 @@ public class Exercise1 {
             System.out.println(s);
 
         }
+
+        /**
+         * TODO
+         * Tutaj umieść kod odpowiedzialny za wyświetlanie wszystkich imion zaczynających się na A - wyświetl od tyłu
+         */
+        System.out.println("\nnames start with 'A', backwards\n");
+        getReverse(listOfNames);
+
         CALC_TIME.stop();
         CALC_TIME.display();
     }
@@ -71,5 +79,25 @@ public class Exercise1 {
         }*/
         //return names;
     }
+
+  public static void getReverse(List<String> ls){
+
+      List<String> reverseList = new ArrayList<>();
+
+      for (int i = 0; i < ls.size(); i++) {
+          char[] cArray = new char[]{};
+          cArray = ls.get(i).toCharArray();
+
+          if (Character.toUpperCase(cArray[0]) == 'A'){
+              for (int j = 0, k = cArray.length -1; j < k; j++, k--) {
+                  char temp = cArray[j];
+                  cArray[j] = cArray[k];
+                  cArray[k] = temp;
+              }
+              System.out.println(new String(cArray));
+          }
+      }
+
+  }
 
 }
