@@ -22,9 +22,9 @@ public class Reminder {
 
         String apple = "apple";
         String secondApple = "apple";
-        String orange = "oragne";
+        String orange = "orange";
 
-        // dodajemy alementy do set
+        // dodajemy elementy do set
         fruitsSet.add(apple);
         fruitsSet.add(secondApple);
         fruitsSet.add(orange);
@@ -63,8 +63,8 @@ public class Reminder {
         System.out.println("//");
     }
 
-    // metoda przyjmuje kolekcje
-    // lista jest kolekcja
+    // metoda przyjmuje kolekcje Collection
+    // lista jest kolekcja - implementuje interfejs Collection (odobnie, jak zbiór - set)
     // set tez jest kolekcja
     // w ciele metody mamy dostep do zmiennych ktore przekzalismy
     private static void printUsingStream(Collection<String> fruitsCollection) {
@@ -79,15 +79,19 @@ public class Reminder {
      */
     public static void printUsingFor(List<String> list) {
 
-        for (int i = 0; i < list.size()  ; i++) {
+       /* for (int i = 0; i < list.size()  ; i++) {
 
             System.out.println(list.get(i));
+        }*/
+
+        for (String s : list) {
+            System.out.println(s);
         }
 
     }
 
     public static void printUsingForEach(Set<String> set) {
-        for(String s: set){
+        for (String s : set) {
             System.out.println(s);
         }
     }
@@ -96,13 +100,13 @@ public class Reminder {
      * TODO
      * Skorzystaj z pętli while
      */
-    public static void printUsingIterator(Collection<String> fruitsCollection){
+    public static void printUsingIterator(Collection<String> fruitsCollection) {
+
         Iterator fruitIterator = fruitsCollection.iterator();
-
         while (fruitIterator.hasNext())
-            fruitIterator.next();
-        }
-
+            System.out.println(
+                    fruitIterator.next());
     }
+}
 
 

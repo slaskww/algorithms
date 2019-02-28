@@ -4,6 +4,7 @@ package org.sda.algorithms.exercises;
 import org.sda.algorithms.util.CalcTime;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -30,8 +31,7 @@ public class Exercise1 {
             listOfNames = setNames();
             System.out.println("w try");
 
-        }
-        finally {
+        } finally {
             scanner.close();
         }
 
@@ -42,32 +42,34 @@ public class Exercise1 {
          * Tutaj umieść kod odpowiedzialny za wyświetlenie imion
          */
 
-        for (String s: listOfNames) {
+        for (String s : listOfNames) {
             System.out.println(s);
-           ;
-        }
 
+        }
         CALC_TIME.stop();
         CALC_TIME.display();
     }
 
 
-    public static List<String> setNames(){
-        List<String> names = new ArrayList<>(5);
+    public static List<String> setNames() {
         Scanner input = new Scanner(System.in);
-        int i = 1;
 
-        for (int j = 0; j < 5; j++) {
-            names.add(input.next());
+        String[] array = new String[5];
+        for (int i = 0; i < 5; i++) {
+            array[i] = input.nextLine();
         }
+        return new ArrayList<>(Arrays.asList(array));
 
-        /*for (String s : names) {
-
-            System.out.println("Podaj imie " + i);
-           s = input.nextLine();
+     /*
+        List<String> names = new ArrayList<>(5);
+        int i = 1;
+        for (String s : names) { //It won't work. ArrayList 'names' is empty
+           System.out.println("Podaj imie " + i);
+           String st = input.nextLine();
+           s.concat(st);
            i++;
         }*/
-        return names;
+        //return names;
     }
 
 }
