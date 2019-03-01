@@ -3,7 +3,7 @@ package org.sda.algorithms.exercises;
 public class Queue {
 
 
-    public final class QueueObject {
+    private class QueueObject {
 
         Object o;
         QueueObject next;
@@ -34,18 +34,18 @@ public class Queue {
             return;
         }
 
-        QueueObject newObj = new QueueObject(o);
+        QueueObject newQObj = new QueueObject(o);
         size++;
 
         if (head == null) { //true if queue is empty
 
-            head = newObj;
-            tail = newObj;
+            head = newQObj;
+            tail = newQObj;
 
         } else {
 
-            tail.next = newObj;
-            tail = newObj;
+            tail.next = newQObj;
+            tail = newQObj;
 
         }
     }
@@ -74,7 +74,6 @@ public class Queue {
 
         }
     }
-
 
     public Object peek() {
 
