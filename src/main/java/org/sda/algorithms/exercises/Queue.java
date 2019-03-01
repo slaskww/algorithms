@@ -1,9 +1,104 @@
 package org.sda.algorithms.exercises;
 
-import java.util.LinkedList;
-
 public class Queue {
 
+
+    public final class QueueObject {
+
+        Object o;
+        QueueObject next;
+
+        public QueueObject(Object o) {
+
+            this.o = o;
+            this.next = null;
+        }
+    }
+
+    public static final int MAX_SIZE = 10;
+    QueueObject head;
+    QueueObject tail;
+    int size;
+
+    public Queue() {
+
+        head = null;
+        tail = null;
+        size = 0;
+    }
+
+    public void enqueue(Object o) {
+
+        if (size == MAX_SIZE) {
+            System.out.println("Queue is full");
+            return;
+        }
+
+        QueueObject newObj = new QueueObject(o);
+        size++;
+
+        if (head == null) { //true if queue is empty
+
+            head = newObj;
+            tail = newObj;
+
+        } else {
+
+            tail.next = newObj;
+            tail = newObj;
+
+        }
+    }
+
+    public Object dequeue() {
+
+        if (size == 0) {
+
+            System.out.println("Queue is empty");
+            return null;
+
+        } else if (size == 1) {
+
+            size--;
+            Object object = head.o;
+            head = null;
+            tail = null;
+            return object;
+
+        } else {
+
+            size--;
+            Object object = head.o;
+            head = head.next;
+            return object;
+
+        }
+    }
+
+
+    public Object peek() {
+
+        return head.o;
+    }
+
+    public boolean isFull() {
+
+        return size == MAX_SIZE;
+    }
+
+    public boolean isEmpty() {
+
+        return size == 0;
+    }
+
+    public int size() {
+
+        return size;
+    }
+
+}
+
+/*{
     public static final int MAX_SIZE = 10;
     private LinkedList<Object> queue;
 
@@ -51,4 +146,4 @@ public class Queue {
 
         return queue.size();
     }
-}
+}*/
