@@ -54,6 +54,12 @@ public class Exercise1 {
         System.out.println("\nnames start with 'A', backwards\n");
         getReverse(listOfNames);
 
+        System.out.println("+++");
+        for (String s : listOfNames) {
+            System.out.println(s);
+
+        }
+
         CALC_TIME.stop();
         CALC_TIME.display();
     }
@@ -82,11 +88,12 @@ public class Exercise1 {
 
   public static void getReverse(List<String> ls){
 
+
       List<String> reverseList = new ArrayList<>();
 
       for (int i = 0; i < ls.size(); i++) {
-          char[] cArray = new char[]{};
-          cArray = ls.get(i).toCharArray();
+         // char[] cArray = new char[]{};
+          char[] cArray = ls.get(i).toCharArray();
 
           if (Character.toUpperCase(cArray[0]) == 'A'){
               for (int j = 0, k = cArray.length -1; j < k; j++, k--) {
