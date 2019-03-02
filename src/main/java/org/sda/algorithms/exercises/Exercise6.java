@@ -3,6 +3,8 @@ package org.sda.algorithms.exercises;
 
 import org.sda.algorithms.util.CalcTime;
 
+import java.util.Scanner;
+
 /**
  * @author marek.sobieraj
  * <p>
@@ -18,16 +20,25 @@ import org.sda.algorithms.util.CalcTime;
 public class Exercise6 {
     private static CalcTime CALC_TIME = new CalcTime();
 
+    private static Scanner scanner = new Scanner(System.in);
+
     public static void main(String[] args) {
 
+        int year = scanner.nextInt();
 
         CALC_TIME.start();
+
+        if(isLeapYear(year)){
+            System.out.println("TAK");
+        } else {
+            System.out.println("NIE");
+        }
 
         CALC_TIME.stop();
         CALC_TIME.display();
     }
 
-    private static boolean isLeapYear(int year) {
-        return false;
+    public static boolean isLeapYear(int year) {
+        return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
     }
 }
