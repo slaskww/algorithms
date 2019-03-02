@@ -25,10 +25,15 @@ public class CesarCrypt {
     }
 
     private boolean isLetter(char c){
-        return true;
+
+        return ((c >= CAPITAL_A) && (c <= CAPITAL_Z) || (c >= SMALL_A) && (c <= SMALL_Z) );
     }
 
     private boolean exceedRange(byte cByte){
-        return true;
+
+        return((cByte > 87) && (cByte < 91) || (cByte > 119) );
+
     }
+
+
 }
