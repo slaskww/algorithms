@@ -98,7 +98,7 @@ public class Exercise5 {
 
             BigDecimal divideResult = val.divide(NOMINALS[j], 0, RoundingMode.FLOOR);
 
-            int comparator = divideResult.compareTo(BigDecimal.valueOf(1));
+            int comparator = divideResult.compareTo(BigDecimal.ONE);
 
             if (comparator != -1) {
 

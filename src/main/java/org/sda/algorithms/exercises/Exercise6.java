@@ -3,6 +3,9 @@ package org.sda.algorithms.exercises;
 
 import org.sda.algorithms.util.CalcTime;
 
+import java.awt.*;
+import java.util.Scanner;
+
 /**
  * @author marek.sobieraj
  * <p>
@@ -20,14 +23,39 @@ public class Exercise6 {
 
     public static void main(String[] args) {
 
+        Scanner input = new Scanner(System.in);
+        System.out.println("Podaj liczbę przypadków  (od 1 do 5)");
+        int cases = input.nextInt();
+
+        int[] years = new int[cases];
+
+        for (int i = 0; i < years.length; i++) {
+
+            years[i] = input.nextInt();
+        }
+
+
+
 
         CALC_TIME.start();
+
+        for (int i = 0; i < years.length; i++) {
+
+            System.out.println(isLeapYear(years[i]));
+        }
+
 
         CALC_TIME.stop();
         CALC_TIME.display();
     }
 
-    private static boolean isLeapYear(int year) {
+    public static boolean isLeapYear(int year) {
+
+        if ((year % 4 == 0) && (year % 100 != 0) || (year % 400 == 0)){
+
+            return true;
+        }
+
         return false;
     }
 }
