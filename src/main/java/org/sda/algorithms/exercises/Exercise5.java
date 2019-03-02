@@ -4,6 +4,8 @@ package org.sda.algorithms.exercises;
 import org.sda.algorithms.util.CalcTime;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.Scanner;
 
 /**
  * @author marek.sobieraj
@@ -39,15 +41,35 @@ public class Exercise5 {
             BigDecimal.valueOf(0.01)
     };
 
+    double[] notes = new double[]{500, 200, 100, 50, 20, 10, 5, 2, 1, 0.5, 0.2, 0.02, 0.01};
+
     public static void main(String[] args) {
 
+        Scanner input = new Scanner(System.in);
         // TODO
         // Pobierze od uzytkownika informacje ile przykladow chce sprawdzic
+        System.out.println("Pddaj licze przypadków (od 1 do 5)");
+        int cases = input.nextInt();
         // Pobierz liczby
+
+
+        BigDecimal[] amounts = new BigDecimal[cases];
+
+        for (int i = 0; i < amounts.length; i++) {
+
+            System.out.println("podaj liczbe: ");
+            amounts[i] = input.nextBigDecimal();
+        }
+
 
         CALC_TIME.start();
 
-        // Rozwiazanie
+
+        for (int i = 0; i < amounts.length; i++) {
+
+            System.out.println(value(amounts[i]));
+
+        }
 
         CALC_TIME.stop();
         CALC_TIME.display();
@@ -67,6 +89,24 @@ public class Exercise5 {
      * 1x 0.01
      */
     private static String value(BigDecimal value) {
-        return "";
+
+        BigDecimal val = value;
+        StringBuilder line = new StringBuilder();
+
+        for (int j = 0; j < NOMINALS.length; j++) {
+
+
+            BigDecimal całe = val.divide(NOMINALS[j], 0, RoundingMode.FLOOR);
+
+            int comparator = całe.compareTo(BigDecimal.valueOf(1));
+
+            if (comparator != -1) {
+
+                line.append(całe + " x " + NOMINALS[j] + " zł\n");
+               // System.out.println(całe + " x " + NOMINALS[j] + " zł");
+                val = val.subtract(NOMINALS[j].multiply(całe));
+            }
+        }
+        return line.toString();
     }
 }

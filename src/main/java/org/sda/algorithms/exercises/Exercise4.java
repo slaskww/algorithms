@@ -44,11 +44,11 @@ public class Exercise4 {
 
         // Rozwiazanie
 
-        int t = 0;
+        int sum = 0;
         for (int i = 0; i < numbArray.length; i++) {
 
-            t += numbArray[i];
-            System.out.println(t);
+            sum += numbArray[i];
+            System.out.print(sum);
         }
 
         CALC_TIME.stop();
