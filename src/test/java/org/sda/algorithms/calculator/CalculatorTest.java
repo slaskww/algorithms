@@ -16,8 +16,9 @@ public class CalculatorTest {
         int firstNumber = 5;
         int secondNumber = 60;
 
+        int result = calculator.add(firstNumber, secondNumber);
         // sprawdzamy czy nasz kalkulator da wynik 65
         // musimy wcześniej wiedzieć, że wynik oddawania 60 i 5 to 65
-        assertThat(calculator.add(firstNumber, secondNumber)).isEqualTo(65);
+        assertThat(result).isEqualTo(65);
     }
 }

@@ -4,6 +4,8 @@ package org.sda.algorithms.exercises;
 import org.sda.algorithms.util.CalcTime;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.Scanner;
 
 /**
  * @author marek.sobieraj
@@ -20,6 +22,8 @@ import java.math.BigDecimal;
  */
 public class Exercise5 {
     private static CalcTime CALC_TIME = new CalcTime();
+
+    private static Scanner scanner = new Scanner(System.in);
 
     private static final BigDecimal[] NOMINALS = {
             BigDecimal.valueOf(500.0),
@@ -41,13 +45,13 @@ public class Exercise5 {
 
     public static void main(String[] args) {
 
-        // TODO
-        // Pobierze od uzytkownika informacje ile przykladow chce sprawdzic
-        // Pobierz liczby
+        System.out.println("Podaj wartosc");
+        BigDecimal kwota = scanner.nextBigDecimal();
 
         CALC_TIME.start();
 
-        // Rozwiazanie
+        String result = value(kwota);
+        System.out.println(result);
 
         CALC_TIME.stop();
         CALC_TIME.display();
@@ -67,6 +71,36 @@ public class Exercise5 {
      * 1x 0.01
      */
     private static String value(BigDecimal value) {
-        return "";
+        // value = 1100
+//        String text = "";
+        StringBuilder stringBuilder = new StringBuilder();
+        for (BigDecimal nominal : NOMINALS) {
+            BigDecimal divideResult = value.divide(nominal, 0, RoundingMode.FLOOR);
+            // pierwsze przejscie petli, nominal = 500, devideResult = 2
+            value = value.subtract(nominal.multiply(divideResult)); // 1100 - (500 * 2) = 100
+
+            if(divideResult.compareTo(BigDecimal.ZERO) > 0) {
+                stringBuilder.append(divideResult);
+                stringBuilder.append("x ");
+                stringBuilder.append(nominal);
+                stringBuilder.append("\n");
+            }
+
+//            text = text + divideResult + " " + nominal;
+        }
+        return stringBuilder.toString();
     }
+
+    /**
+     * 1100
+     * nominal = 500, devideResult = 2
+     * 1100 - (500 * 2) = 100
+     *
+     * 100
+     * nominal = 200, devideResult = 0
+     * 100 - (200 * 0) = 100
+     *
+     * 100
+     * nominal = 100, devideResult = 1
+     */
 }
