@@ -1,6 +1,7 @@
 package org.sda.algorithms.examples;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class BigDecimalExamples {
 
@@ -28,6 +29,7 @@ public class BigDecimalExamples {
 
         BigDecimal sto = new BigDecimal("100");
         BigDecimal dziesiec = new BigDecimal("10");
+        BigDecimal siedem = new BigDecimal("7");
 
         int czyStoJestWiekszeOdDziesiec = sto.compareTo(dziesiec);
         System.out.println(czyStoJestWiekszeOdDziesiec);
@@ -40,5 +42,10 @@ public class BigDecimalExamples {
         } else {
             System.out.println("Jest mniejsze");
         }
+
+        //----------------dzielenie
+
+        BigDecimal divideResult = sto.divide(siedem, RoundingMode.FLOOR);
+        System.out.println(divideResult);
     }
 }
