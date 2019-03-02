@@ -29,10 +29,19 @@ public class Exercise7 {
             System.out.println("Podaj liczby (oddzielone przecinkiem): ");
             String[] numbers = scanner.nextLine().split(",");
 
+            System.out.println("Podaj liczbę, którą mam sprawdzić: ");
+            search = scanner.nextInt();
+
+            values = new int[numbers.length];
+            for (int i = 0; i < numbers.length; i++){
+
+                values[i] = Integer.parseInt(numbers[i]);
+            }
         }
 
         CALC_TIME.start();
 
+        System.out.println(findPosition( values, search));
 
         CALC_TIME.stop();
         CALC_TIME.display();
@@ -40,6 +49,14 @@ public class Exercise7 {
     }
 
     private static int findPosition(int[] values, int search) {
-        return 0;
+
+        for (int i = 0; i < values.length; i++) {
+
+            if (values[i] == search) {
+                return i+1;
+            }
+        }
+
+        return -1;
     }
 }
