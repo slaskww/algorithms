@@ -104,7 +104,6 @@ public class StackTest {
     }
 
     @Test
-<<<<<<< HEAD
     public void testPeek(){
 
         Stack stack = new Stack();
@@ -134,47 +133,3 @@ public class StackTest {
         assertThat(stack.size()).isEqualTo(0);
     }
 }
-=======
-    public void testGetMoreThanIsOnStack(){
-        // Test sprawdza czy jest możliwość sciągnięcia elementu ze stosu,, gdy stos jestt pusty
-
-        // GIVEN -> Obiekt stacka do testów
-        Stack stack = new Stack();
-
-        Integer integer = 34;
-        stack.push(integer);
-
-        // WHEN -> ściągamy obiekt ze stosu
-       Object o1 = stack.pop();
-       Object o2 = stack.pop();
-
-        // THEN
-        // Sprawdzamy czy rozmiar stacka jest równy 0
-
-        assertThat(stack.size()).isEqualTo(0);
-    }
-
-    @Test
-    public void testGetUsingPeek(){
-        // Test sprawdza czy po tym jak pobierze się element, llczba elementóów na stosie się nie zmienia
-
-        // GIVEN -> Obiekt stacka do testów
-        Stack stack = new Stack();
-
-        // WHEN -> dodajemy element na stos
-        Integer integer = 34;
-        stack.push(integer);
-
-        // THEN
-        // Sprawdzamy czy po ściągnięciu ellementu ze stosu stos ma tę samą wielkość
-
-        assertThat(stack.size()).isEqualTo(1);
-        Object result =  stack.peek();
-        assertThat(result).isEqualTo(integer);
-        assertThat(stack.size()).isEqualTo(1);
-    }
-
-
-
-}
->>>>>>> myBranch
