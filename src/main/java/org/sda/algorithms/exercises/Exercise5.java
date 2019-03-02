@@ -48,7 +48,7 @@ public class Exercise5 {
         Scanner input = new Scanner(System.in);
         // TODO
         // Pobierze od uzytkownika informacje ile przykladow chce sprawdzic
-        System.out.println("Pddaj licze przypadków (od 1 do 5)");
+        System.out.println("Podaj liczbe kwot (od 1 do 5)");
         int cases = input.nextInt();
         // Pobierz liczby
 
@@ -57,7 +57,7 @@ public class Exercise5 {
 
         for (int i = 0; i < amounts.length; i++) {
 
-            System.out.println("podaj liczbe: ");
+            System.out.println("podaj wartość: ");
             amounts[i] = input.nextBigDecimal();
         }
 
@@ -96,15 +96,15 @@ public class Exercise5 {
         for (int j = 0; j < NOMINALS.length; j++) {
 
 
-            BigDecimal całe = val.divide(NOMINALS[j], 0, RoundingMode.FLOOR);
+            BigDecimal divideResult = val.divide(NOMINALS[j], 0, RoundingMode.FLOOR);
 
-            int comparator = całe.compareTo(BigDecimal.valueOf(1));
+            int comparator = divideResult.compareTo(BigDecimal.valueOf(1));
 
             if (comparator != -1) {
 
-                line.append(całe + " x " + NOMINALS[j] + " zł\n");
-               // System.out.println(całe + " x " + NOMINALS[j] + " zł");
-                val = val.subtract(NOMINALS[j].multiply(całe));
+                line.append(divideResult + " x " + NOMINALS[j] + " zł\n");
+               // System.out.println(divideResult + " x " + NOMINALS[j] + " zł");
+                val = val.subtract(NOMINALS[j].multiply(divideResult));
             }
         }
         return line.toString();
