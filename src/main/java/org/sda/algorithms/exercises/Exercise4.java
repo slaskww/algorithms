@@ -29,11 +29,27 @@ public class Exercise4 {
 
         // TODO
         // Pobierze od uzytkownika informacje ile przykladow chce sprawdzic
+
+        System.out.println("Ile liczb?");
+        int numbers = scanner.nextInt();
+
         // Pobierz liczby
+
+        int[] numbArray  =  new int[numbers];
+        for (int i = 0; i < numbArray.length; i++) {
+            numbArray[i] = scanner.nextInt();
+        }
 
         CALC_TIME.start();
 
         // Rozwiazanie
+
+        int t = 0;
+        for (int i = 0; i < numbArray.length; i++) {
+
+            t += numbArray[i];
+            System.out.println(t);
+        }
 
         CALC_TIME.stop();
         CALC_TIME.display();
