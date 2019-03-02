@@ -3,6 +3,8 @@ package org.sda.algorithms.exercises;
 
 import org.sda.algorithms.util.CalcTime;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -22,23 +24,40 @@ public class Exercise3 {
 
     public static void main(String[] args) {
 
-        // TODO
-        // Pobierze od uzytkownika informacje ile przykladow chce sprawdzic
-        // Pobierz liczny
+        System.out.println("Ile przykladow chcesz sprawdzic?");
+        int liczbaPrzykladow = scanner.nextInt();
+
+        List<Integer> liczbyDoSprawdzenia = new ArrayList<>();
+//        int[] tablicaLiczbyDoSprawdzenia = new int[liczbaPrzykladow];
+
+        for(int i=0; i < liczbaPrzykladow; i++){
+            System.out.println("Podaj przyklad nr " + i);
+            int liczba = scanner.nextInt();
+            liczbyDoSprawdzenia.add(liczba);
+        }
 
         CALC_TIME.start();
 
-        // TODO
-        // Sprawdz czy liczba jest pierwsza uzywajac metody isPrime
+        for(int liczba: liczbyDoSprawdzenia){
+            boolean prime = isPrime(liczba);
+            if(prime){
+                System.out.println("TAK");
+            } else {
+                System.out.println("NIE");
+            }
+        }
 
         CALC_TIME.stop();
         CALC_TIME.display();
     }
 
-    // TODO
-    // zaimplementuj metode ktora zwroci true dla kazdej liczby pierwszej
-    // i false dla innych
     public static boolean isPrime(int number) {
-        return false;
+
+        for(int i= 2; i < number / 2; i++){
+            if(number % i == 0){
+                return false;
+            }
+        }
+        return true;
     }
 }
