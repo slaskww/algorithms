@@ -8,6 +8,7 @@ public class Zoo {
         Cat cat = new Cat();
         Dog dog = new Dog();
         Fox fox = new Fox();
+        Cow cow = new Cow();
 
         System.out.println("What does the cat say?");
         cat.sound();
@@ -15,6 +16,8 @@ public class Zoo {
         dog.sound();
         System.out.println("What does the fox say?");
         fox.sound();
+        System.out.println("What does the cow say?");
+        cow.sound();
 
         // Not very efficient ...
 
