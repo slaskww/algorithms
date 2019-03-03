@@ -35,7 +35,7 @@ public class Exercise7 {
             values = new int[numbers.length];
             for (int i = 0; i < numbers.length; i++){
 
-                values[i] = Integer.parseInt(numbers[i]);
+            values[i] = Integer.parseInt(numbers[i]);
             }
         }
 
