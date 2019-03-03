@@ -17,8 +17,12 @@ public class CesarTest {
 
         String result = cesarCrypt.encodeCesar(inputData, 4);
         assertThat(result).isEqualTo("ek");
-        result = cesarCrypt.encodeCesar(inputData2, 4);
+
+        result = cesarCrypt.encodeCesar(inputData2, 3);
         assertThat(result).isEqualTo("abc");
+
+        result = cesarCrypt.encodeCesar(inputData, -4);
+        assertThat(result).isEqualTo("wc");
     }
 
 
@@ -34,7 +38,7 @@ public class CesarTest {
         String result = cesarCrypt.decodeCesar(inputData, 4);
         assertThat(result).isEqualTo("ag");
 
-        result = cesarCrypt.decodeCesar(inputData2, 4);
+        result = cesarCrypt.decodeCesar(inputData2, 3);
         assertThat(result).isEqualTo("xyz");
     }
 }

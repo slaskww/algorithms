@@ -20,7 +20,7 @@ public class Exercise8 {
 
     private static final CalcTime CALC_TIME = new CalcTime();
 
-    private static final int CESAR_STEP = 4;
+    private static final int CESAR_STEP = -1;
 
     public static void main(String[] args) {
 
@@ -36,6 +36,12 @@ public class Exercise8 {
 
         String encoded = cesarCrypt.encodeCesar(text, CESAR_STEP);
         System.out.println(encoded);
+
+        String decoded = cesarCrypt.decodeCesar(encoded, CESAR_STEP);
+        System.out.println(decoded);
+
+
+        System.out.println((char) 176);
 
         CALC_TIME.stop();
         CALC_TIME.display();

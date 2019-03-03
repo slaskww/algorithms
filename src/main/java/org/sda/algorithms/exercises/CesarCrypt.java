@@ -28,18 +28,35 @@ public class CesarCrypt {
             byte cByte = (byte) textArray[i];
             byte bstep = (byte) (cByte + step);
 
+            /*if (step < 0){
+
+               // return decodeCesar(text, -step);
+                step+=25;
+            }*/
+
             if (isLetter(textArray[i])){
 
                 if (exceedRange(bstep)){
 
-                   cByte -= 23;
-                   encText.append((char)cByte);
+                    if (step  < 0){
+
+                        byte ii = (byte) (26 + step);
+                        cByte += ii;
+                        encText.append((char)cByte);
+                    } else{
+
+                        byte ii = (byte) (3 - step);
+                        cByte -= 23+ii;
+                        encText.append((char)cByte);
+                    }
+
+
                 } else {
 
                     cByte += step;
                     encText.append((char)cByte);
                 }
-            } else{
+            } else {
 
                 encText.append(textArray[i]);
             }
@@ -55,6 +72,12 @@ public class CesarCrypt {
         textArray =  text.toCharArray();
         StringBuilder encText = new StringBuilder();
 
+        /*if (step < 0){
+
+           // return encodeCesar(text, -step);
+
+        }*/
+
         for (int i = 0; i < textArray.length ; i++) {
 
             byte cByte = (byte) textArray[i];
@@ -64,7 +87,8 @@ public class CesarCrypt {
 
                 if (exceedRange(bstep)){
 
-                    cByte += 23;
+                    byte ii = (byte) (24 - step);
+                    cByte += ii;
                     encText.append((char)cByte);
                 } else{
 
