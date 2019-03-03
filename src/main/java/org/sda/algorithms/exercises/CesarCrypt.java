@@ -17,11 +17,71 @@ public class CesarCrypt {
      * byte cByte = (byte) c;
      */
     public String encodeCesar(String text, int step) {
-        return text;
+
+
+        char[] textArray  =  new char[]{};
+        textArray =  text.toCharArray();
+        StringBuilder encText = new StringBuilder();
+
+        for (int i = 0; i < textArray.length ; i++) {
+
+            byte cByte = (byte) textArray[i];
+            byte bstep = (byte) (cByte + step);
+
+            if (isLetter(textArray[i])){
+
+                if (exceedRange(bstep)){
+
+                   cByte -= 23;
+                   encText.append((char)cByte);
+                } else {
+
+                    cByte += step;
+                    encText.append((char)cByte);
+                }
+            } else{
+
+                encText.append(textArray[i]);
+            }
+
+        }
+
+        return encText.toString();
     }
 
     public String decodeCesar(String text, int step) {
-        return text;
+
+        char[] textArray  =  new char[]{};
+        textArray =  text.toCharArray();
+        StringBuilder encText = new StringBuilder();
+
+        for (int i = 0; i < textArray.length ; i++) {
+
+            byte cByte = (byte) textArray[i];
+            byte bstep = (byte) (cByte - step);
+
+            if (isLetter(textArray[i])){
+
+                if (exceedRange(bstep)){
+
+                    cByte += 23;
+                    encText.append((char)cByte);
+                } else{
+
+                    cByte -= step;
+                    encText.append((char)cByte);
+                }
+
+            } else {
+
+                encText.append(textArray[i]);
+            }
+
+
+        }
+
+        return encText.toString();
+
     }
 
     private boolean isLetter(char c){
@@ -31,7 +91,9 @@ public class CesarCrypt {
 
     private boolean exceedRange(byte cByte){
 
-        return((cByte > 87) && (cByte < 91) || (cByte > 119) );
+      //  return((cByte > 87) && (cByte < 91) || (cByte > 119) );
+        return !(((cByte > 64) && (cByte < 91) || (cByte > 96) && (cByte < 123)));
+
 
     }
 

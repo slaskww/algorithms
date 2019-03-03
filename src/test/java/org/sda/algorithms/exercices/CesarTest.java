@@ -17,4 +17,16 @@ public class CesarTest {
         String result = cesarCrypt.encodeCesar(inputData, 4);
         assertThat(result).isEqualTo("ek");
     }
+
+
+    @Test
+    public void testCesarDecode(){
+
+        CesarCrypt cesarCrypt = new CesarCrypt();
+
+        String inputData = "ek";
+
+        String result = cesarCrypt.decodeCesar(inputData, 4);
+        assertThat(result).isEqualTo("ag");
+    }
 }
