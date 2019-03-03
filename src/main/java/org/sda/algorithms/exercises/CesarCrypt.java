@@ -13,11 +13,29 @@ public class CesarCrypt {
     /**
      *
      * Podpowiedź:
-     *
+     * char c = 'a';
      * byte cByte = (byte) c;
      */
     public String encodeCesar(String text, int step) {
-        return text;
+
+        int alphabetLength = CAPITAL_Z - CAPITAL_A  + 1;
+        char[] chars = text.toCharArray();
+        StringBuilder stringBuilder = new StringBuilder();
+        for(char c: chars){
+            if(isLetter(c)){
+                byte cByte = (byte) c;
+                cByte += step;
+
+                if (exceedRange(cByte)) {
+                    cByte -= alphabetLength;
+                }
+
+                stringBuilder.append((char) cByte);
+            } else {
+                stringBuilder.append(c);
+            }
+        }
+        return stringBuilder.toString();
     }
 
     public String decodeCesar(String text, int step) {
@@ -25,10 +43,10 @@ public class CesarCrypt {
     }
 
     private boolean isLetter(char c){
-        return true;
+        return (c > 64 && c < 91) || (c > 96 && c < 123);
     }
 
     private boolean exceedRange(byte cByte){
-        return true;
+        return (cByte > 90 && cByte < 97) || cByte > 122;
     }
 }
