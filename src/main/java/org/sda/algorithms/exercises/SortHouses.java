@@ -7,7 +7,6 @@ import static org.sda.algorithms.exercises.BubbleSort.sortBubble;
 
 public class SortHouses {
 
-
     public static void main(String[] args) {
 
         Random rand = new Random();
@@ -15,8 +14,9 @@ public class SortHouses {
         ArrayList<House> houses = new ArrayList<>();
 
         for (int i = 0; i < 4; i++) {
-            houses.add(new House(100 + rand.nextInt(150),
-                    50 + rand.nextInt(70),
+
+            houses.add(new House(100 + rand.nextInt(300),
+                    40 + rand.nextInt(100),
                     2 + rand.nextInt(8)));
         }
 
@@ -24,6 +24,7 @@ public class SortHouses {
         for (House h : houses) {
             System.out.println(h.toString());
         }
+
         System.out.println("After bubbleSort:");
         sortBubble(houses);
 
