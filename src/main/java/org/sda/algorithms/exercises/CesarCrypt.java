@@ -92,8 +92,8 @@ public class CesarCrypt {
     private boolean exceedRange(byte cByte){
 
       //  return((cByte > 87) && (cByte < 91) || (cByte > 119) );
-        return !(((cByte > 64) && (cByte < 91) || (cByte > 96) && (cByte < 123)));
-
+        //return !(((cByte > 64) && (cByte < 91) || (cByte > 96) && (cByte < 123)));
+        return !isLetter((char) cByte);
 
     }
 
