@@ -39,14 +39,34 @@ public class CesarCrypt {
     }
 
     public String decodeCesar(String text, int step) {
-        return text;
+
+        int alphabetLength = CAPITAL_Z - CAPITAL_A  + 1;
+        char[] chars = text.toCharArray();
+        StringBuilder stringBuilder = new StringBuilder();
+        for(char c: chars){
+            if(isLetter(c)){
+                byte cByte = (byte) c;
+                cByte -= step;
+
+                if (exceedRange(cByte)) {
+                    cByte += alphabetLength;
+                }
+
+                stringBuilder.append((char) cByte);
+            } else {
+                stringBuilder.append(c);
+            }
+        }
+
+        return stringBuilder.toString();
     }
 
     private boolean isLetter(char c){
-        return (c > 64 && c < 91) || (c > 96 && c < 123);
+        return (64 < c && c < 91) || (96 < c && c < 123);
     }
 
     private boolean exceedRange(byte cByte){
-        return (cByte > 90 && cByte < 97) || cByte > 122;
+        return !isLetter((char) cByte);
+//        return 65 > cByte || (90 < cByte && cByte < 97) || cByte > 122;
     }
 }
