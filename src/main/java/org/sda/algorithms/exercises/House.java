@@ -12,4 +12,24 @@ public class House {
         this.size = size;
         this.rooms = rooms;
     }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public double getSize() {
+        return size;
+    }
+
+    public int getRooms() {
+        return rooms;
+    }
+
+    @Override
+    public String toString() {
+        return "Offer details: " +
+                "price " + price +
+                " $, size " + size +
+                " m2, number of rooms " + rooms;
+    }
 }
