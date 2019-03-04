@@ -12,17 +12,19 @@ public class CesarTest {
 
         CesarCrypt cesarCrypt = new CesarCrypt();
 
-        String inputData = "ag";
-        String inputData2 = "xyz";
+        String inputData = "abcxyz ABCXYZ";
 
         String result = cesarCrypt.encodeCesar(inputData, 4);
-        assertThat(result).isEqualTo("ek");
+        assertThat(result).isEqualTo("efgbcd EFGBCD");
 
-        result = cesarCrypt.encodeCesar(inputData2, 3);
-        assertThat(result).isEqualTo("abc");
+        result = cesarCrypt.encodeCesar(inputData, 31);
+        assertThat(result).isEqualTo("fghcde FGHCDE");
 
         result = cesarCrypt.encodeCesar(inputData, -4);
-        assertThat(result).isEqualTo("wc");
+        assertThat(result).isEqualTo("wxytuv WXYTUV");
+
+        result = cesarCrypt.encodeCesar(inputData, -31);
+        assertThat(result).isEqualTo("vwxstu VWXSTU");
     }
 
 
@@ -31,14 +33,18 @@ public class CesarTest {
 
         CesarCrypt cesarCrypt = new CesarCrypt();
 
-        String inputData = "ek";
-        String inputData2 = "abc";
-
+        String inputData = "abcxyz ABCXYZ";
 
         String result = cesarCrypt.decodeCesar(inputData, 4);
-        assertThat(result).isEqualTo("ag");
+        assertThat(result).isEqualTo("wxytuv WXYTUV");
 
-        result = cesarCrypt.decodeCesar(inputData2, 3);
-        assertThat(result).isEqualTo("xyz");
+        result = cesarCrypt.decodeCesar(inputData, 31);
+        assertThat(result).isEqualTo("vwxstu VWXSTU");
+
+        result = cesarCrypt.decodeCesar(inputData, -4);
+        assertThat(result).isEqualTo("efgbcd EFGBCD");
+
+        result = cesarCrypt.decodeCesar(inputData, -31);
+        assertThat(result).isEqualTo("fghcde FGHCDE");
     }
 }

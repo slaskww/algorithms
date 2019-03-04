@@ -20,7 +20,7 @@ public class Exercise8 {
 
     private static final CalcTime CALC_TIME = new CalcTime();
 
-    private static final int CESAR_STEP = 32;
+    private static final int CESAR_STEP = 4;
 
     public static void main(String[] args) {
 
