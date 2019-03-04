@@ -10,23 +10,30 @@ public class CesarCrypt {
 
     private static final char SMALL_Z = 'z';
 
+    public static final byte ALPHABET_SIZE = CAPITAL_Z - CAPITAL_A + 1;
+
     /**
-     *
      * Podpowiedź:
-     *
+     * <p>
      * byte cByte = (byte) c;
      */
     public String encodeCesar(String text, int step) {
 
+        if (step > 31 || step <  -31) {
 
-        char[] textArray  =  new char[]{};
-        textArray =  text.toCharArray();
+            throw new IndexOutOfBoundsException("Step is out of range. Use step between <-31, 31>");
+
+        }
+
+        char[] textArray;
+        textArray = text.toCharArray();
         StringBuilder encText = new StringBuilder();
 
-        for (int i = 0; i < textArray.length ; i++) {
+
+        for (int i = 0; i < textArray.length; i++) {
 
             byte cByte = (byte) textArray[i];
-            byte bstep = (byte) (cByte + step);
+            byte bstep = (byte) (cByte + step); //position after translation
 
             /*if (step < 0){
 
@@ -34,27 +41,26 @@ public class CesarCrypt {
                 step+=25;
             }*/
 
-            if (isLetter(textArray[i])){
+            byte translationRange = step < 0 ? ALPHABET_SIZE : -ALPHABET_SIZE;
 
-                if (exceedRange(bstep)){
+            if (isLetter(textArray[i])) {
 
-                    if (step  < 0){
+                if (exceedRange(cByte, bstep)) {
 
-                        byte ii = (byte) (26 + step);
-                        cByte += ii;
-                        encText.append((char)cByte);
-                    } else{
+                    cByte += translationRange + step;
 
-                        byte ii = (byte) (3 - step);
-                        cByte -= 23+ii;
-                        encText.append((char)cByte);
-                    }
+                    if (exceedRange((byte) textArray[i], cByte)) {
 
+                        encText.append((char) (cByte + translationRange));
+
+                    } else
+
+                        encText.append((char) cByte);
 
                 } else {
 
                     cByte += step;
-                    encText.append((char)cByte);
+                    encText.append((char) cByte);
                 }
             } else {
 
@@ -68,32 +74,42 @@ public class CesarCrypt {
 
     public String decodeCesar(String text, int step) {
 
-        char[] textArray  =  new char[]{};
-        textArray =  text.toCharArray();
+        if (step > 31 || step <  -31) {
+
+            System.out.println("Step is out of range. Use step between <-31, 31>");
+            throw new IndexOutOfBoundsException();
+
+        }
+
+        char[] textArray;
+        textArray = text.toCharArray();
         StringBuilder encText = new StringBuilder();
 
-        /*if (step < 0){
+        byte translationRange = (step < 0) ? -ALPHABET_SIZE : ALPHABET_SIZE;
 
-           // return encodeCesar(text, -step);
-
-        }*/
-
-        for (int i = 0; i < textArray.length ; i++) {
+        for (int i = 0; i < textArray.length; i++) {
 
             byte cByte = (byte) textArray[i];
             byte bstep = (byte) (cByte - step);
 
-            if (isLetter(textArray[i])){
+            if (isLetter(textArray[i])) {
 
-                if (exceedRange(bstep)){
+                if (exceedRange(cByte, bstep)) {
 
-                    byte ii = (byte) (24 - step);
-                    cByte += ii;
-                    encText.append((char)cByte);
-                } else{
+                    cByte += translationRange - step;
+
+                    if (exceedRange((byte) textArray[i], cByte)) { //conditional statement gives 'true' for step > 26 and step < -26
+
+                        encText.append((char) (cByte + translationRange));
+
+                    } else
+
+                        encText.append((char) cByte);
+
+                } else {
 
                     cByte -= step;
-                    encText.append((char)cByte);
+                    encText.append((char) cByte);
                 }
 
             } else {
@@ -101,23 +117,36 @@ public class CesarCrypt {
                 encText.append(textArray[i]);
             }
 
-
         }
 
         return encText.toString();
 
     }
 
-    private boolean isLetter(char c){
+    private boolean isLetter(char c) {
 
-        return ((c >= CAPITAL_A) && (c <= CAPITAL_Z) || (c >= SMALL_A) && (c <= SMALL_Z) );
+        return ((c >= CAPITAL_A) && (c <= CAPITAL_Z) || (c >= SMALL_A) && (c <= SMALL_Z));
     }
 
-    private boolean exceedRange(byte cByte){
+    private boolean exceedRange(byte cByte, byte position) {
 
-      //  return((cByte > 87) && (cByte < 91) || (cByte > 119) );
+
+        if ((cByte >= CAPITAL_A) && (cByte <= CAPITAL_Z)) {
+
+            return (position < 65 || position > 90);
+        }
+
+        if ((cByte >= SMALL_A) && (cByte <= SMALL_Z)) {
+
+            return (position < 97 || position > 122);
+        }
+
+        return true;
+
+
+        //  return((cByte > 87) && (cByte < 91) || (cByte > 119) );
         //return !(((cByte > 64) && (cByte < 91) || (cByte > 96) && (cByte < 123)));
-        return !isLetter((char) cByte);
+        // return !isLetter((char) cByte);
 
     }
 

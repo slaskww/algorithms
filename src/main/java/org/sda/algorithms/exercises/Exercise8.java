@@ -20,13 +20,14 @@ public class Exercise8 {
 
     private static final CalcTime CALC_TIME = new CalcTime();
 
-    private static final int CESAR_STEP = -1;
+    private static final int CESAR_STEP = 32;
 
     public static void main(String[] args) {
 
         CesarCrypt cesarCrypt = new CesarCrypt();
 
         String text;
+        System.out.println(CesarCrypt.ALPHABET_SIZE);
         System.out.println("Podaj tekst do zakodowania");
         try (Scanner scanner = new Scanner(System.in)) {
             text = scanner.nextLine();
