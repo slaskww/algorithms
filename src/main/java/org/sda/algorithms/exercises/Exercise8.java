@@ -33,6 +33,7 @@ public class Exercise8 {
             text = scanner.nextLine();
         }
 
+
         CALC_TIME.start();
 
         String encoded = cesarCrypt.encodeCesar(text, CESAR_STEP);
