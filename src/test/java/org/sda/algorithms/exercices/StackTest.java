@@ -1,6 +1,5 @@
 package org.sda.algorithms.exercices;
 
-import org.assertj.core.internal.bytebuddy.build.ToStringPlugin;
 import org.junit.jupiter.api.Test;
 import org.sda.algorithms.exercises.Stack;
 
@@ -104,32 +103,45 @@ public class StackTest {
     }
 
     @Test
-    public void testPeek(){
+    public void testGetMoreThanIsOnStack(){
+        // Test sprawdza czy jest możliwość sciągnięcia elementu ze stosu,, gdy stos jestt pusty
 
+        // GIVEN -> Obiekt stacka do testów
         Stack stack = new Stack();
 
-        String string = "SDA";
-        stack.push(string);
+        Integer integer = 34;
+        stack.push(integer);
 
-        Object result = stack.peek();
+        // WHEN -> ściągamy obiekt ze stosu
+       Object o1 = stack.pop();
+       Object o2 = stack.pop();
 
-        assertThat(result).isEqualTo(string);
-        assertThat(stack.size()).isEqualTo(1);
-    }
-
-    @Test
-    public void getMoreThanIsOnStack(){
-        Stack stack = new Stack();
-
-        String string = "SDA";
-        stack.push(string);
-
-        Object result1 = stack.pop();
-        Object result2 = stack.pop();
-
-        assertThat(result1).isEqualTo(string);
-        assertThat(result2).isEqualTo(null);
+        // THEN
+        // Sprawdzamy czy rozmiar stacka jest równy 0
 
         assertThat(stack.size()).isEqualTo(0);
     }
+
+    @Test
+    public void testGetUsingPeek(){
+        // Test sprawdza czy po tym jak pobierze się element, llczba elementóów na stosie się nie zmienia
+
+        // GIVEN -> Obiekt stacka do testów
+        Stack stack = new Stack();
+
+        // WHEN -> dodajemy element na stos
+        Integer integer = 34;
+        stack.push(integer);
+
+        // THEN
+        // Sprawdzamy czy po ściągnięciu ellementu ze stosu stos ma tę samą wielkość
+
+        assertThat(stack.size()).isEqualTo(1);
+        Object result =  stack.peek();
+        assertThat(result).isEqualTo(integer);
+        assertThat(stack.size()).isEqualTo(1);
+    }
+
+
+
 }
