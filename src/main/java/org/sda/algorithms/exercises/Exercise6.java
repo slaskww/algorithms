@@ -30,7 +30,7 @@ public class Exercise6 {
         int[] years = new int[cases];
 
         for (int i = 0; i < years.length; i++) {
-
+            System.out.println("podaj " + (i+1) + " rok");
             years[i] = input.nextInt();
         }
 
@@ -41,7 +41,13 @@ public class Exercise6 {
 
         for (int i = 0; i < years.length; i++) {
 
-            System.out.println(isLeapYear(years[i]));
+            if((isLeapYear(years[i]))){
+                System.out.println("rok " + years[i] + " jest przestępny");
+
+            } else {
+                System.out.println("rok " + years[i] + " nie jest przestępny");
+
+            }
         }
 
 
