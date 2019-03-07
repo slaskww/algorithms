@@ -23,8 +23,6 @@ import java.util.Scanner;
 public class Exercise5 {
     private static CalcTime CALC_TIME = new CalcTime();
 
-    private static Scanner scanner = new Scanner(System.in);
-
     private static final BigDecimal[] NOMINALS = {
             BigDecimal.valueOf(500.0),
             BigDecimal.valueOf(200.0),
@@ -43,15 +41,35 @@ public class Exercise5 {
             BigDecimal.valueOf(0.01)
     };
 
+    double[] notes = new double[]{500, 200, 100, 50, 20, 10, 5, 2, 1, 0.5, 0.2, 0.02, 0.01};
+
     public static void main(String[] args) {
 
-        System.out.println("Podaj wartosc");
-        BigDecimal kwota = scanner.nextBigDecimal();
+        Scanner input = new Scanner(System.in);
+        // TODO
+        // Pobierze od uzytkownika informacje ile przykladow chce sprawdzic
+        System.out.println("Podaj liczbe kwot (od 1 do 5)");
+        int cases = input.nextInt();
+        // Pobierz liczby
+
+
+        BigDecimal[] amounts = new BigDecimal[cases];
+
+        for (int i = 0; i < amounts.length; i++) {
+
+            System.out.println("podaj wartość: ");
+            amounts[i] = input.nextBigDecimal();
+        }
+
 
         CALC_TIME.start();
 
-        String result = value(kwota);
-        System.out.println(result);
+
+        for (int i = 0; i < amounts.length; i++) {
+
+            System.out.println(value(amounts[i]));
+
+        }
 
         CALC_TIME.stop();
         CALC_TIME.display();
@@ -71,36 +89,24 @@ public class Exercise5 {
      * 1x 0.01
      */
     private static String value(BigDecimal value) {
-        // value = 1100
-//        String text = "";
-        StringBuilder stringBuilder = new StringBuilder();
-        for (BigDecimal nominal : NOMINALS) {
-            BigDecimal divideResult = value.divide(nominal, 0, RoundingMode.FLOOR);
-            // pierwsze przejscie petli, nominal = 500, devideResult = 2
-            value = value.subtract(nominal.multiply(divideResult)); // 1100 - (500 * 2) = 100
 
-            if(divideResult.compareTo(BigDecimal.ZERO) > 0) {
-                stringBuilder.append(divideResult);
-                stringBuilder.append("x ");
-                stringBuilder.append(nominal);
-                stringBuilder.append("\n");
+        BigDecimal val = value;
+        StringBuilder line = new StringBuilder();
+
+        for (int j = 0; j < NOMINALS.length; j++) {
+
+
+            BigDecimal divideResult = val.divide(NOMINALS[j], 0, RoundingMode.FLOOR);
+
+            int comparator = divideResult.compareTo(BigDecimal.ONE);
+
+            if (comparator != -1) {
+
+                line.append(divideResult + " x " + NOMINALS[j] + " zł\n");
+               // System.out.println(divideResult + " x " + NOMINALS[j] + " zł");
+                val = val.subtract(NOMINALS[j].multiply(divideResult));
             }
-
-//            text = text + divideResult + " " + nominal;
         }
-        return stringBuilder.toString();
+        return line.toString();
     }
-
-    /**
-     * 1100
-     * nominal = 500, devideResult = 2
-     * 1100 - (500 * 2) = 100
-     *
-     * 100
-     * nominal = 200, devideResult = 0
-     * 100 - (200 * 0) = 100
-     *
-     * 100
-     * nominal = 100, devideResult = 1
-     */
 }

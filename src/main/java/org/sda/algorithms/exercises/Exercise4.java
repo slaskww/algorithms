@@ -3,8 +3,6 @@ package org.sda.algorithms.exercises;
 
 import org.sda.algorithms.util.CalcTime;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -29,31 +27,28 @@ public class Exercise4 {
 
     public static void main(String[] args) {
 
-        System.out.println("Podaj ile liczb chcesz sprawdzic?");
-        int liczbaPrzykladow = scanner.nextInt();
+        // TODO
+        // Pobierze od uzytkownika informacje ile przykladow chce sprawdzic
 
-        List<Integer> liczbyDoZsumowania = new ArrayList<>();
+        System.out.println("Ile liczb?");
+        int numbers = scanner.nextInt();
 
-        for(int i=0; i< liczbaPrzykladow; i++){
-            System.out.println("Podaj kolejna liczbe");
-            int liczba = scanner.nextInt();
-            liczbyDoZsumowania.add(liczba);
+        // Pobierz liczby
+
+        int[] numbArray  =  new int[numbers];
+        for (int i = 0; i < numbArray.length; i++) {
+            numbArray[i] = scanner.nextInt();
         }
 
         CALC_TIME.start();
 
-        int sum = 0;
-        for(int liczba: liczbyDoZsumowania){
-            sum += liczba;
-//            sum = sum + liczba;
-            System.out.println(sum);
-        }
+        // Rozwiazanie
 
-        int sum2 = 0;
-        for(int i =0; i < liczbyDoZsumowania.size(); i++){
-            int liczba = liczbyDoZsumowania.get(i);
-            sum2 += liczba;
-            System.out.println(sum2);
+        int sum = 0;
+        for (int i = 0; i < numbArray.length; i++) {
+
+            sum += numbArray[i];
+            System.out.print(sum);
         }
 
         CALC_TIME.stop();

@@ -27,15 +27,23 @@ public class Exercise8 {
         CesarCrypt cesarCrypt = new CesarCrypt();
 
         String text;
+        System.out.println(CesarCrypt.ALPHABET_SIZE);
         System.out.println("Podaj tekst do zakodowania");
         try (Scanner scanner = new Scanner(System.in)) {
             text = scanner.nextLine();
         }
 
+
         CALC_TIME.start();
 
         String encoded = cesarCrypt.encodeCesar(text, CESAR_STEP);
         System.out.println(encoded);
+
+        String decoded = cesarCrypt.decodeCesar(encoded, CESAR_STEP);
+        System.out.println(decoded);
+
+
+        System.out.println((char) 176);
 
         CALC_TIME.stop();
         CALC_TIME.display();

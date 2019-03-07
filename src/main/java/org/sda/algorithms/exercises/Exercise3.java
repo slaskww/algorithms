@@ -33,9 +33,10 @@ public class Exercise3 {
 
         List<Integer> numbersToTest = new ArrayList<Integer>();
 
-        for (int i = 0; i<numbers; i++) {
+        for (int i = 0; i < numbers; i++) {
+
             System.out.println("Podaj liczbe: ");
-            int n  =  scanner.nextInt();
+            int n = scanner.nextInt();
             numbersToTest.add(n);
         }
 
@@ -44,7 +45,7 @@ public class Exercise3 {
         // TODO
         // Sprawdz czy liczba jest pierwsza uzywajac metody isPrime
 
-        for (int i: numbersToTest) {
+        for (int i : numbersToTest) {
             System.out.print(i + ": ");
             System.out.println(isPrime(i));
         }
@@ -60,25 +61,25 @@ public class Exercise3 {
 
         double sqrtNumb = Math.sqrt(number);
 
-        if (number ==  1){
+        if (number == 1) {
             return false;
         }
 
-        if (number  ==  2){
+        if (number == 2) {
 
             return true;
         }
 
 
-        if (number % 2 == 0){
+        if (number % 2 == 0) {
             return false;
         }
 
-        for (int i = 3; i <= sqrtNumb; i+=2 ){
+        for (int i = 3; i <= sqrtNumb; i += 2) {
 
-                  if (number % i == 0)
-                      return false;
-                }
+            if (number % i == 0)
+                return false;
+        }
 
         return true;
     }
