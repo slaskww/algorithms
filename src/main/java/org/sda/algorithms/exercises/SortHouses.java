@@ -18,7 +18,8 @@ public class SortHouses {
 
         for (int i = 0; i < 4; i++) {
 
-            houses.add(new House(100 + rand.nextInt(333),
+            houses.add(new House(
+                    100 + rand.nextInt(333),
                     40 + rand.nextInt(135),
                     3 + rand.nextInt(8)));
         }
