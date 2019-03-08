@@ -28,8 +28,8 @@ public class Exercise8 {
 
         String text;
         System.out.println(CesarCrypt.ALPHABET_SIZE);
-      //  System.out.println("Podaj tekst do zakodowania");
-          System.out.println("Podaj tekst do odkodowania");
+        System.out.println("Podaj tekst do zakodowania");
+   //     System.out.println("Podaj tekst do odkodowania");
 
         try (Scanner scanner = new Scanner(System.in)) {
             text = scanner.nextLine();
@@ -41,13 +41,13 @@ public class Exercise8 {
         String encoded = cesarCrypt.encodeCesar(text, CESAR_STEP);
         System.out.println(encoded);
 
-       // String decoded = cesarCrypt.decodeCesar(encoded, CESAR_STEP);
-       // System.out.println(decoded);
-
-        String decoded = cesarCrypt.decodeCesar(text, CESAR_STEP);
+        String decoded = cesarCrypt.decodeCesar(encoded, CESAR_STEP);
         System.out.println(decoded);
 
-        System.out.println((char) 176);
+     //   String decoded = cesarCrypt.decodeCesar(text, CESAR_STEP);
+     //   System.out.println(decoded);
+
+     //   System.out.println((char) 176);
 
         CALC_TIME.stop();
         CALC_TIME.display();

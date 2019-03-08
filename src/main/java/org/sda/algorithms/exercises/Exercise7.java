@@ -25,9 +25,13 @@ public class Exercise7 {
 
         int[] values;
         int search;
-        try (Scanner scanner = new Scanner(System.in)) {
+        try (Scanner scanner = new Scanner(System.in)) { //uzycie obiektu scanner jako parametru w try, powoduje automatyczne wywołanie close() dla scannera po wyjściu z bloku try
             System.out.println("Podaj liczby (oddzielone przecinkiem): ");
-            String[] numbers = scanner.nextLine().split(",");
+
+     //       String text = scanner.nextLine();
+     //       String[] numbers = text.split(",");
+     // alternatywnie:
+            String[] numbers = scanner.nextLine().split(",");//meoda split przyjmuje parametr typu regex (regular expression), dzieli łańcuch wy.regex i zwraca tablice podzielonyvh Stringów
 
             System.out.println("Podaj liczbę, którą mam sprawdzić: ");
             search = scanner.nextInt();
