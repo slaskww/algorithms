@@ -21,14 +21,29 @@ public class RobotGroup {
     public static void main(String[] args) {
 
         List<Robot> robotGroup = getRobotGroup();
+
+        // Wykorzystanie wcześniej stworzonej klasy
         print(robotGroup, new CheckIfDancer());
+        System.out.println();
+
+        // klasa anonimowa, utworzona w miejscu wykorzystania
+        // Anonimowa ponieważ nie ma nazwy i nie istnieje w innym miejscu
+        print(robotGroup, new Checker() {
+            @Override
+            public boolean check(Robot robot) {
+                return robot.isRunner();
+            }
+        });
+        System.out.println();
+
+        /* Tym na razie się nie przejmujemy
+
+        print(robotGroup, Robot::isSinger);
         System.out.println();
 
         print(robotGroup, robot -> robot.getName().contains("a"));
         System.out.println();
-
-        print(robotGroup, Robot::isSinger);
-        System.out.println();
+        */
     }
 
     public static void print(List<Robot> robotList, Checker checker) {
