@@ -31,7 +31,7 @@ public class RobotGroup {
         System.out.println();
     }
 
-    public static void print(List<Robot> robotList, Check checker) {
+    public static void print(List<Robot> robotList, Checker checker) {
         for (Robot robot : robotList) {
             if (checker.check(robot)) {
                 System.out.println(robot);

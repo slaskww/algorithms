@@ -2,6 +2,6 @@ package org.sda.algorithms.lambda.introduction.objects;
 
 /**
  */
-public interface Check {
+public interface Checker {
     boolean check(Robot robot);
 }
