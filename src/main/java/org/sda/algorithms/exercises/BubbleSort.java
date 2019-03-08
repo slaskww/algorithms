@@ -13,6 +13,12 @@ public class BubbleSort {
 
         switch(c){
 
+            case  "i" :
+                for (int i = 0; i<arrays.size(); i++){
+                    fieldToSort[i] = arrays.get(i).getOfferNumber();
+                }
+                break;
+
             case  "p" :
                         for (int i = 0; i<arrays.size(); i++){
                         fieldToSort[i] = arrays.get(i).getPrice();
