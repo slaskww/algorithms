@@ -1,4 +1,4 @@
-package org.sda.algorithms.exercises;
+package org.sda.algorithms.exercises.sorting;
 
 import org.sda.algorithms.house.House;
 
