@@ -82,7 +82,7 @@ public static void sortByChosen(ArrayList<BoardGame> list, String choice){
 
 public static void showInterface(){
 
-    System.out.println("\nSort by: \nn = name\nr = rate\np = price\nmax = min number of players\nmax = max number of players\nq = quit \n");
+    System.out.println("\nSort by: \nn = name\nr = rate\np = price\nmin = min number of players\nmax = max number of players\nq = quit \n");
 }
 }
 
