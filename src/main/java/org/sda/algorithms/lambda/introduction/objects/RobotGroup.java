@@ -28,7 +28,7 @@ public class RobotGroup {
 
         // klasa anonimowa, utworzona w miejscu wykorzystania
         // Anonimowa ponieważ nie ma nazwy i nie istnieje w innym miejscu
-        print(robotGroup, new Checker() {
+        print(robotGroup, new Checker<Robot>() {
             @Override
             public boolean check(Robot robot) {
                 return robot.isRunner();
@@ -36,17 +36,14 @@ public class RobotGroup {
         });
         System.out.println();
 
-        /* Tym na razie się nie przejmujemy
-
         print(robotGroup, Robot::isSinger);
         System.out.println();
 
         print(robotGroup, robot -> robot.getName().contains("a"));
         System.out.println();
-        */
     }
 
-    public static void print(List<Robot> robotList, Checker checker) {
+    public static void print(List<Robot> robotList, Checker<Robot> checker) {
         for (Robot robot : robotList) {
             if (checker.check(robot)) {
                 System.out.println(robot);

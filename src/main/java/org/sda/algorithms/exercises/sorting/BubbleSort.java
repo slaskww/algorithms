@@ -10,11 +10,10 @@ public class BubbleSort {
     public static void main(String[] args) {
 
         //-------------- Sortowanie liczb
-
         int[] numbers = new int[]{4,56,7,89,2};
 
         printTable(numbers);
-        SortingUtil.bubbleSortByHouseSize(numbers);
+        SortingUtil.bubbleSort(numbers);
         printTable(numbers);
 
         System.out.println();

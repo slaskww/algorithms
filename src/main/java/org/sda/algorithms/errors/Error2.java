@@ -2,7 +2,7 @@ package org.sda.algorithms.errors;
 
 public class Error2 {
 
-    public static Integer constValue;
+    public static Integer constValue = 10;
 
     public static void main(String[] args) {
 
@@ -12,7 +12,11 @@ public class Error2 {
 
     }
 
-    public static int multiplyByConst(Integer integer){
-        return constValue * integer;
+    public static int multiplyByConst(Integer integer) {
+        if (constValue != null) {
+            return constValue * integer;
+        } else {
+            return integer;
+        }
     }
 }
