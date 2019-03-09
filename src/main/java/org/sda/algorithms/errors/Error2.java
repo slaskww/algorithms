@@ -2,7 +2,7 @@ package org.sda.algorithms.errors;
 
 public class Error2 {
 
-    public static Integer constValue;
+    public static Integer constValue = 10;
 
     public static void main(String[] args) {
 
