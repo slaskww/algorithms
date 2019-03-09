@@ -1,5 +1,6 @@
 package org.sda.algorithms.exercises.insertion;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Function;
 
@@ -38,6 +39,22 @@ public class SortingUtil {
             objects.set(i, null);
             int j = i-1;
             while (j >=0 && tIntegerFunction.apply(objects.get(j)) > tIntegerFunction.apply(nonSorted)){
+                objects.set(j+1,objects.get(j));
+                j--;
+            }
+
+            objects.set(j + 1, nonSorted);
+        }
+    }
+
+    public static <T> void insertionSort(List<T> objects, Comparator<T> comparator) {
+        for (int i = 1; i < objects.size(); i++) {
+            T nonSorted = objects.get(i);
+            objects.set(i, null);
+            int j = i-1;
+
+//            while (j >=0 && tIntegerFunction.apply(objects.get(j)) > tIntegerFunction.apply(nonSorted)){
+            while (j >=0 && comparator.compare(objects.get(j), nonSorted) > 0){
                 objects.set(j+1,objects.get(j));
                 j--;
             }

@@ -29,6 +29,8 @@ public class InsertionSortTests {
         System.out.println();
 
         SortingUtil.insertionSort(boardGames, BoardGame::getMinimalPlayers);
+        print(boardGames);
+        System.out.println();
 
     }
 
