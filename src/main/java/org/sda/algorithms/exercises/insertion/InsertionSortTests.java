@@ -32,6 +32,9 @@ public class InsertionSortTests {
         print(boardGames);
         System.out.println();
 
+
+        SortingUtil.insertionSort(boardGames, new BoardGameByPriceComparator());
+
     }
 
     public static void print(List<BoardGame> boardGames){
