@@ -37,4 +37,9 @@ public class BoardGame {
     public int getMaxPlayers() {
         return maxPlayers;
     }
+
+    @Override
+    public String toString() {
+        return  String.format("%15s %7.2f %9.2f %8d %11d",name,rank ,price, minPlayers, maxPlayers);
+    }
 }
