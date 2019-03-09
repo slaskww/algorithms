@@ -55,6 +55,7 @@ public class BubbleSort {
                     double dTemp = fieldToSort[j];
                     fieldToSort[j] = fieldToSort[j +1];
                     fieldToSort[j+1] = dTemp;
+                    //mozna tu stworzyc metode swap
 
                     temp = arrays.get(j);
                     arrays.set(j, arrays.get(j + 1)); //replace element j with j+1

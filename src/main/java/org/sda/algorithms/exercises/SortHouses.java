@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-import static org.sda.algorithms.exercises.BubbleSort.sortBubble;
+import static org.sda.algorithms.exercises.BubbleSort.sortBubble; ///sortowanie statyczne bez tworzenia obiektu klasy BubbleSort
 
 public class SortHouses {
 
