@@ -35,13 +35,13 @@ public class Exercise12 {
         // mają ocenę wyższą niż 8,
         // kosztują mniej niż 150 zł
 
-        for(BoardGame game: GAMES){
-            if(game.getMaximumPlayers() > 4 && game.getScore() > 8 && game.getPrice().compareTo(new BigDecimal("150")) < 0){
+        for (BoardGame game : GAMES) {
+            if (game.getMaximumPlayers() > 4 && game.getScore() > 8 && game.getPrice().compareTo(new BigDecimal("150")) < 0) {
                 wybraneGry.add(game);
             }
         }
 
-        for(BoardGame game: wybraneGry){
+        for (BoardGame game : wybraneGry) {
             System.out.println(game.toString());
         }
 
@@ -54,7 +54,7 @@ public class Exercise12 {
                 .collect(Collectors.toList());
 
         System.out.println();
-        for(BoardGame game: games){
+        for (BoardGame game : games) {
             System.out.println(game.toString());
         }
 
@@ -68,7 +68,7 @@ public class Exercise12 {
                 .filter(boardGame -> boardGame.getMinimalPlayers() >= 2)
                 .collect(Collectors.toList());
 
-        for(BoardGame boardGame: gamesFor2Players){
+        for (BoardGame boardGame : gamesFor2Players) {
             System.out.println(boardGame);
         }
 
@@ -106,6 +106,24 @@ public class Exercise12 {
 
         // 3. Wypisz najtańszą gry
 
+        System.out.println("Wypisz najtańszą gry");
+        GAMES.stream()
+                .sorted((o1, o2) -> o1.getPrice().compareTo(o2.getPrice()))
+                .limit(1)
+                .forEach(System.out::println);
+
+        System.out.println();
+        BoardGame boardGame = GAMES.stream()
+                .min((o1, o2) -> o1.getPrice().compareTo(o2.getPrice()))
+                .get();
+
+        System.out.println(boardGame);
+
+        GAMES.stream()
+                .min((o1, o2) -> o1.getPrice().compareTo(o2.getPrice()))
+                .ifPresent(System.out::println);
+
+        System.out.println();
 
         // 4. Wypisz najdroższą gry
 
@@ -119,8 +137,6 @@ public class Exercise12 {
         // 8. Wypisz najtansza gre ze wszystkich gier dla maksymalnie 5 graczy
 
         // 9. Wypisz 3 gry ktore maja najgorsze oceny
-
-
 
 
     }
