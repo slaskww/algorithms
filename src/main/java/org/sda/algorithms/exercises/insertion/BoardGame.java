@@ -40,6 +40,6 @@ public class BoardGame {
 
     @Override
     public String toString() {
-        return  String.format("%15s %7.2f %9.2f %8d %11d",name,rank ,price, minPlayers, maxPlayers);
+        return  String.format("%-20s %7.2f %9.2f %8d %11d",name,rank ,price, minPlayers, maxPlayers);
     }
 }

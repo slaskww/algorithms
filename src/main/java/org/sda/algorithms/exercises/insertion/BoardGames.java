@@ -45,13 +45,26 @@ public static void showGames(List<BoardGame> games){
     String playMax = "[max]players";
     String playMin = "[min]players";
     System.out.println();
-    System.out.println(String.format("%14s %8s %8s %14s %8s", name, rank, price, playMin, playMax));
+    System.out.println(String.format("%-20s %8s %8s %14s %8s", name, rank, price, playMin, playMax));
 
     for (int i = 0; i < games.size(); i++) {
         System.out.println(games.get(i));
     }
 
 }
+
+    public static void showGame(BoardGame game) {
+
+        String name = "[n]ame";
+        String rank = "[r]ank";
+        String price = "[p]rice";
+        String playMax = "[max]players";
+        String playMin = "[min]players";
+        System.out.println();
+        System.out.println(String.format("%-20s %8s %8s %14s %8s", name, rank, price, playMin, playMax));
+
+        System.out.println(game);
+    }
 
 public static void sortByChosen(ArrayList<BoardGame> list, String choice){
 
