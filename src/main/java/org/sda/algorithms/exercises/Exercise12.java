@@ -12,6 +12,8 @@ import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.*;
 //CRID/CRUD
+///ddos
+///ctrl shift n
 public class Exercise12 {
 
     public static List<BoardGame> GAMES = Arrays.asList(
