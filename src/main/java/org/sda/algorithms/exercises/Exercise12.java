@@ -166,9 +166,35 @@ public class Exercise12 {
 
         // 6. Wypisz kwotę do zapłaty za wszystkie gry po jednej sztuce (suma)
 
+        System.out.println("Wypisz kwotę do zapłaty za wszystkie gry po jednej sztuce (suma)");
+        GAMES.stream()
+                .map(boardGame -> boardGame.getPrice())
+                .reduce((bigDecimal, bigDecimal2) -> bigDecimal.add(bigDecimal2))
+                .ifPresent(System.out::println);
 
+        System.out.println();
+
+        // w metodzie reduce mówimy jak zredukować dwa obiekty do jednego
+        GAMES.stream()
+                .map(BoardGame::getPrice)
+                .reduce(BigDecimal::add)
+                .ifPresent(System.out::println);
+
+        System.out.println();
 
         // 7. Wypisz najdroższą grę wśród gier z ocena powyzej 8
+
+        System.out.println("Wypisz najdroższą grę wśród gier z ocena powyzej 8");
+        GAMES.stream()
+                .filter(boardGame -> boardGame.getScore() > 8)
+                .max((o1, o2) -> o1.getPrice().compareTo(o2.getPrice()))
+                .ifPresent(System.out::println);
+
+        GAMES.stream()
+                .filter(boardGame -> boardGame.getScore() > 8)
+                .sorted(Comparator.comparing(BoardGame::getPrice).reversed())
+                .limit(1)
+                .forEach(System.out::println);
 
         // 8. Wypisz najtansza gre ze wszystkich gier dla maksymalnie 5 graczy
 

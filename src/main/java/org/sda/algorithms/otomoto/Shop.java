@@ -24,5 +24,12 @@ public class Shop {
         String someCity = someAddress.getCity();
         String somePostalCode = someAddress.getPostalCode();
 
+        cars.stream()
+                .filter(Shop::isCarInWroclaw)
+                .forEach(System.out::println);
+    }
+
+    private static boolean isCarInWroclaw(Car car1) {
+        return car1.getOwner().getAddress().getCity().equals("Wrocław");
     }
 }
