@@ -6,6 +6,7 @@ import org.sda.algorithms.util.CalcTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.IntStream;
 
 /**
  * @author marek.sobieraj
@@ -38,13 +39,38 @@ public class Exercise9 {
         }
 
         CALC_TIME.start();
+        for(Integer number: numbers){
 
+            int silnia = 1;
+            for(int i = 1; i <= number; i++){
+                silnia = silnia * i;
+            }
+            System.out.println("Silnia dla " + number + " wynosi " + silnia);
+        }
+
+        System.out.println("Rekurencja");
+
+        for(Integer number: numbers){
+            long result = silnia(number);
+            System.out.println("Silnia dla " + number + " wynosi " + result);
+        }
+
+        System.out.println("Stream");
+
+        for(Integer number: numbers){
+            IntStream.rangeClosed(1,number)
+                    .reduce((left, right) -> left * right)
+                    .ifPresent(System.out::println);
+        }
 
         CALC_TIME.stop();
         CALC_TIME.display();
     }
 
     private static long silnia(int value) {
-        return 0;
+        if(value == 1){
+            return 1;
+        }
+        return value * silnia(value-1);
     }
 }
