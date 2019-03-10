@@ -7,14 +7,11 @@ import java.io.FileReader;
 import java.math.BigDecimal;
 import java.util.*;
 import java.util.regex.Pattern;
-import java.util.stream.DoubleStream;
-import java.util.stream.IntStream;
-import java.util.stream.LongStream;
-import java.util.stream.Stream;
+import java.util.stream.*;
 
 public class Exercise12 {
 
-    public static List<BoardGame> GAMES = Arrays.asList(
+    public final static List<BoardGame> GAMES = Arrays.asList(
             new BoardGame("Terraforming Mars", 8.38, new BigDecimal("123.49"), 1, 5),
             new BoardGame("Codenames", 7.82, new BigDecimal("64.95"), 2, 8),
             new BoardGame("Puerto Rico", 8.07, new BigDecimal("149.99"), 2, 5),
@@ -37,20 +34,42 @@ public class Exercise12 {
         // mają ocenę wyższą niż 8,
         // kosztują mniej niż 150 zł
 
+        for(BoardGame game: GAMES){
+            if(game.getMaximumPlayers() > 4 && game.getScore() > 8 && game.getPrice().compareTo(new BigDecimal("150")) < 0){
+                wybraneGry.add(game);
+            }
+        }
+
+        for(BoardGame game: wybraneGry){
+            System.out.println(game.toString());
+        }
 
         // Przykład od prowadzącego
 
+        List<BoardGame> games = GAMES.stream()
+                .filter(boardGame -> boardGame.getMaximumPlayers() > 4)
+                .filter(boardGame -> boardGame.getScore() > 8)
+                .filter(boardGame -> boardGame.getPrice().compareTo(new BigDecimal("150")) < 0)
+                .collect(Collectors.toList());
+
+        System.out.println();
+        for(BoardGame game: games){
+            System.out.println(game.toString());
+        }
+
+        Stream<BoardGame> boardGameStream = GAMES.stream();
+        Stream<BoardGame> onlyForMoteThan4Players = boardGameStream.filter(boardGame -> boardGame.getMaximumPlayers() > 4);
 
         // 1. wypisz wszystkie gry dla minimum dwóch graczy
 
 
-        // 2. Posortuj wody wg ceny
+        // 2. Posortuj gry wg ceny
 
 
-        // 3. Wypisz najtańszą wodę
+        // 3. Wypisz najtańszą gry
 
 
-        // 4. Wypisz najdroższą wodę
+        // 4. Wypisz najdroższą gry
 
 
         // 5. Podaj średnią punktacje wszystkich gier
