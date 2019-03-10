@@ -3,10 +3,7 @@ package org.sda.algorithms.exercises.insertion;
 import org.sda.algorithms.exercises.sorting.SortingUtil;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class BoardGames {
 
@@ -66,7 +63,7 @@ public static void sortByChosen(ArrayList<BoardGame> list, String choice){
             case "r" : SortingUtils.insertionSort(list, new BoardGameComparator.SortByRank());
                 break;
 
-            case "p" : SortingUtils.insertionSort(list, new BoardGameComparator.SortByPrice());
+            case "p" : Collections.sort(list, new BoardGameComparator.SortByPrice()); //metoda  sort wbudowana w Collections
                 break;
 
             case "max" : SortingUtils.insertionSort(list, Comparator.comparingInt(BoardGame::getMinPlayers));
