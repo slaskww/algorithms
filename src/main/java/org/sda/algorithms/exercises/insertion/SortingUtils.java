@@ -33,6 +33,7 @@ public class SortingUtils  {
             int  j = i-1;
 
             while(j >= 0 && comparator.compare(list.get(j), p) > 0){
+                System.out.println(comparator.compare(list.get(j), p));
 
                 list.set(j+1, list.get(j));
                 j = j-1;

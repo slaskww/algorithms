@@ -4,6 +4,7 @@ import org.sda.algorithms.exercises.sorting.SortingUtil;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -68,10 +69,10 @@ public static void sortByChosen(ArrayList<BoardGame> list, String choice){
             case "p" : SortingUtils.insertionSort(list, new BoardGameComparator.SortByPrice());
                 break;
 
-            case "max" : SortingUtils.insertionSort(list, new BoardGameComparator.SortByMaxPlayers());
+            case "max" : SortingUtils.insertionSort(list, Comparator.comparingInt(BoardGame::getMinPlayers));
                 break;
 
-            case "min" : SortingUtils.insertionSort(list, new BoardGameComparator.SortByMinPlayers());
+            case "min" : SortingUtils.insertionSort(list, (o1, o2) -> o1.getMinPlayers() - o2.getMinPlayers());
                 break;
 
             default:

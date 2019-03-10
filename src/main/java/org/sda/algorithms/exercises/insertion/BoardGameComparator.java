@@ -40,5 +40,14 @@ public class BoardGameComparator {
         public int compare(BoardGame o1, BoardGame o2) {
             return Integer.compare(o1.getMinPlayers(), o2.getMinPlayers());
         }
+
+        /*@Override
+        public int compare(BoardGame o1, BoardGame o2 ->   (o1.getMinPlayers()- o2.getMinPlayers()) > 0 ? 1 :
+                (o1.getMinPlayers()- o2.getMinPlayers()) < 0 ? -1  :  0)
+            */
+
+
+
+
     }
 }
