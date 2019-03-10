@@ -1,3 +1,4 @@
+/*
 package org.sda.algorithms.exercises.insertion;
 
 import java.util.Comparator;
@@ -16,3 +17,4 @@ public class BoardGameByScoreComparator implements Comparator<BoardGame> {
         return (int)(score1 - score2);
     }
 }
+*/

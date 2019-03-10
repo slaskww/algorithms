@@ -38,6 +38,20 @@ public class Exercise12 {
         // kosztują mniej niż 150 zł
 
 
+
+        for (int i = 0; i < GAMES.size(); i++) {
+            if (GAMES.get(i).getMaxPlayers() > 4 && GAMES.get(i).getRank() > 8 && GAMES.get(i).getPrice().compareTo(new BigDecimal("150")) < 0 ){
+
+                wybraneGry.add(GAMES.get(i));
+            }
+        }
+
+        for (BoardGame  bg: wybraneGry) {
+            System.out.println(bg.getName());
+        }
+
+
+
         // Przykład od prowadzącego
 
 

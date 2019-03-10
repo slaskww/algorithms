@@ -1,9 +1,12 @@
+/*
 package org.sda.algorithms.exercises.insertion;
 
 import java.math.BigDecimal;
 import java.util.*;
 
 public class InsertionSortTests {
+*/
+/**//*
 
     public static void main(String[] args) {
 
@@ -76,3 +79,4 @@ public class InsertionSortTests {
         }
     }
 }
+*/
