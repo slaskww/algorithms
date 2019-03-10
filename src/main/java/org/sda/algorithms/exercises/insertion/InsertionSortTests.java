@@ -1,9 +1,7 @@
 package org.sda.algorithms.exercises.insertion;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class InsertionSortTests {
 
@@ -60,6 +58,15 @@ public class InsertionSortTests {
         print(boardGames);
         System.out.println();
 
+
+        Comparator<BoardGame> boardGameComparator = new BoardGameByPriceComparator();
+        int result = boardGameComparator.compare(boardGames.get(0),boardGames.get(0));
+        System.out.println(result);
+
+        result = boardGameComparator.compare(boardGames.get(0),boardGames.get(1));
+        System.out.println(result);
+
+        Collections.sort(boardGames, new BoardGameByPriceComparator());
     }
 
     public static void print(List<BoardGame> boardGames){
