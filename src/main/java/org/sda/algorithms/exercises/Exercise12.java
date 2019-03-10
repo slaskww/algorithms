@@ -113,11 +113,14 @@ public class Exercise12 {
                 .forEach(System.out::println);
 
         System.out.println();
-        BoardGame boardGame = GAMES.stream()
+        BoardGame boardGameX = GAMES.stream()
                 .min((o1, o2) -> o1.getPrice().compareTo(o2.getPrice()))
                 .get();
 
-        System.out.println(boardGame);
+        System.out.println(boardGameX);
+
+        Optional<BoardGame> optionalBoardGame = GAMES.stream()
+                .min(Comparator.comparing(BoardGame::getPrice));
 
         GAMES.stream()
                 .min((o1, o2) -> o1.getPrice().compareTo(o2.getPrice()))
@@ -125,12 +128,45 @@ public class Exercise12 {
 
         System.out.println();
 
-        // 4. Wypisz najdroższą gry
+        // 4. Wypisz najdroższą gre
 
+        System.out.println("Wypisz najdroższą gre");
+        // wybieramy najwiekszy element ze strumienia
+        GAMES.stream()
+                .max((o1, o2) -> o1.getPrice().compareTo(o2.getPrice()))
+                .ifPresent(System.out::println);
+
+        // sortujemy malejaco i wyboeramy pierwszy element z strumienia
+        GAMES.stream()
+                .sorted((o1, o2) -> o2.getPrice().compareTo(o1.getPrice()))
+                .limit(1)
+                .forEach(System.out::println);
+
+        // sortujemy malejaco i wyboeramy pierwszy element z strumienia
+        GAMES.stream()
+                .sorted(Comparator.comparing(BoardGame::getPrice).reversed())
+                .limit(1)
+                .forEach(System.out::println);
 
         // 5. Podaj średnią punktacje wszystkich gier
 
+        // map zamienia jeden typ na inny
+        List<BigDecimal> prices = GAMES.stream()
+                .map(game -> game.getPrice())
+                .collect(Collectors.toList());
+
+
+        System.out.println("Podaj średnią punktacje wszystkich gier");
+        GAMES.stream()
+                .mapToDouble(BoardGame::getScore)
+                .average()
+                .ifPresent(System.out::println);
+
+        System.out.println();
+
         // 6. Wypisz kwotę do zapłaty za wszystkie gry po jednej sztuce (suma)
+
+
 
         // 7. Wypisz najdroższą grę wśród gier z ocena powyzej 8
 
