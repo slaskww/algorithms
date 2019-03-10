@@ -198,8 +198,19 @@ public class Exercise12 {
 
         // 8. Wypisz najtansza gre ze wszystkich gier dla maksymalnie 5 graczy
 
+        System.out.println(" Wypisz najtansza gre ze wszystkich gier dla maksymalnie 5 graczy");
+        GAMES.stream()
+                .filter(boardGame -> boardGame.getMaximumPlayers() < 6)
+                .min((o1, o2) -> o1.getPrice().compareTo(o2.getPrice()))
+                .ifPresent(System.out::println);
+
         // 9. Wypisz 3 gry ktore maja najgorsze oceny
 
+        System.out.println("Wypisz 3 gry ktore maja najgorsze oceny");
+        GAMES.stream()
+                .sorted(Comparator.comparingDouble(BoardGame::getScore))
+                .limit(3)
+                .forEach(System.out::println);
 
     }
 }
