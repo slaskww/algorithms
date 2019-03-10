@@ -12,7 +12,11 @@ public class Error2 {
 
     }
 
-    public static int multiplyByConst(Integer integer){
-        return constValue * integer;
+    public static int multiplyByConst(Integer integer) {
+        if (constValue != null) {
+            return constValue * integer;
+        } else {
+            return integer;
+        }
     }
 }

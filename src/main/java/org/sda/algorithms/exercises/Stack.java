@@ -1,6 +1,6 @@
 package org.sda.algorithms.exercises;
 
-public class Stack {
+public class Stack<T> {
 
     private int maxSize = 10;
     // tablica w której będziemy trzymać obiekty
@@ -14,7 +14,7 @@ public class Stack {
     // Dodatkowo:
     // Drugi kontruktor który bedzie przyjmowal rozmiar stosu
 
-    public void push(Object o){
+    public void push(T o){
 
         // sprawdzamy czy size przekroczyl maksymalny rozmiar stosu
 
@@ -42,7 +42,7 @@ public class Stack {
         // jeśli wrzuciliśmy coś pod index = 0 to rozmiar wynosi 1
     }
 
-    public Object pop(){
+    public T pop(){
 
         if(isEmpty()){
             System.out.println("Stos pusty");
@@ -51,12 +51,12 @@ public class Stack {
             Object o = objectOnStack[size - 1]; //sciagamy ostatni element, index jest o 1 mniejszy niz rozmiar
             objectOnStack[size - 1] = null;
             size--;
-            return o;
+            return (T) o;
         }
     }
 
-    public Object peek(){
-        return objectOnStack[size - 1];
+    public T peek(){
+        return (T) objectOnStack[size - 1];
     }
 
     public boolean isFull(){
