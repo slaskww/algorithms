@@ -1,6 +1,7 @@
 package org.sda.algorithms.exercises;
 
 import org.sda.algorithms.exercises.insertion.BoardGame;
+import org.sda.algorithms.exercises.insertion.BoardGameByPriceComparator;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -83,7 +84,25 @@ public class Exercise12 {
 
         // 2. Posortuj gry wg ceny
 
+        System.out.println();
+        System.out.println("Posortuj gry wg ceny");
+        GAMES.stream()
+                .sorted(new BoardGameByPriceComparator())
+                .forEach(System.out::println);
 
+        System.out.println();
+        GAMES.stream()
+                .sorted(Comparator.comparing(BoardGame::getPrice))
+                .sorted((o1, o2) -> o1.getPrice().compareTo(o2.getPrice()))
+                .sorted((BoardGame o1, BoardGame o2) -> {
+                    BigDecimal price1 = o1.getPrice();
+                    BigDecimal price2 = o2.getPrice();
+                    return price1.compareTo(price2);
+                })
+                .sorted(new BoardGameByPriceComparator())
+                .forEach(System.out::println);
+
+        System.out.println();
 
         // 3. Wypisz najtańszą gry
 
