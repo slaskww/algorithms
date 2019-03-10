@@ -59,11 +59,30 @@ public class Exercise12 {
 
         Stream<BoardGame> boardGameStream = GAMES.stream();
         Stream<BoardGame> onlyForMoteThan4Players = boardGameStream.filter(boardGame -> boardGame.getMaximumPlayers() > 4);
-
+        System.out.println();
         // 1. wypisz wszystkie gry dla minimum dwóch graczy
 
+        System.out.println("wypisz wszystkie gry dla minimum dwóch graczy");
+        List<BoardGame> gamesFor2Players = GAMES.stream()
+                .filter(boardGame -> boardGame.getMinimalPlayers() >= 2)
+                .collect(Collectors.toList());
+
+        for(BoardGame boardGame: gamesFor2Players){
+            System.out.println(boardGame);
+        }
+
+        System.out.println();
+        GAMES.stream()
+                .filter(boardGame -> boardGame.getMinimalPlayers() >= 2)
+                .forEach(boardGame -> System.out.println(boardGame));
+
+        System.out.println();
+        GAMES.stream()
+                .filter(boardGame -> boardGame.getMinimalPlayers() >= 2)
+                .forEach(System.out::println);
 
         // 2. Posortuj gry wg ceny
+
 
 
         // 3. Wypisz najtańszą gry
