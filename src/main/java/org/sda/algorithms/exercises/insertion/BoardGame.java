@@ -2,7 +2,7 @@ package org.sda.algorithms.exercises.insertion;
 
 import java.math.BigDecimal;
 
-public class BoardGame {
+public class BoardGame implements Comparable<BoardGame> {
 
     private String name;
 
@@ -74,5 +74,14 @@ public class BoardGame {
                 ", minimalPlayers=" + minimalPlayers +
                 ", maximumPlayers=" + maximumPlayers +
                 '}';
+    }
+
+    @Override
+    public int compareTo(BoardGame o) {
+        int result = this.getPrice().compareTo(o.getPrice());
+        if(result == 0){
+            return Double.compare(this.getScore(), o.getScore());
+        }
+        return result;
     }
 }

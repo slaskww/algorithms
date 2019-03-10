@@ -212,5 +212,7 @@ public class Exercise12 {
                 .limit(3)
                 .forEach(System.out::println);
 
+        Collections.sort(GAMES);
+
     }
 }
