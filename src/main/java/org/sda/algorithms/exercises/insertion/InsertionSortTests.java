@@ -2,6 +2,7 @@ package org.sda.algorithms.exercises.insertion;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class InsertionSortTests {
@@ -32,8 +33,32 @@ public class InsertionSortTests {
         print(boardGames);
         System.out.println();
 
-
+        System.out.println("Po cenie");
         SortingUtil.insertionSort(boardGames, new BoardGameByPriceComparator());
+        print(boardGames);
+        System.out.println();
+
+        System.out.println("Po ocenie");
+        SortingUtil.insertionSort(boardGames, new BoardGameByScoreComparator());
+        print(boardGames);
+        System.out.println();
+
+
+        System.out.println("Po minimalnej liczbie graczy");
+        SortingUtil.insertionSort(boardGames, new Comparator<BoardGame>() {
+
+            @Override
+            public int compare(BoardGame o1, BoardGame o2) {
+                return o1.getMinimalPlayers() - o2.getMinimalPlayers();
+            }
+        });
+        print(boardGames);
+        System.out.println();
+
+        System.out.println("Po minimalnej liczbie graczy");
+        SortingUtil.insertionSort(boardGames, (o1, o2) -> o1.getMinimalPlayers() - o2.getMinimalPlayers());
+        print(boardGames);
+        System.out.println();
 
     }
 

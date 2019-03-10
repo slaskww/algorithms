@@ -1,9 +1,8 @@
 package org.sda.algorithms.exercises.insertion;
 
-import java.math.BigDecimal;
 import java.util.Comparator;
 
-public class BoardGameByPriceComparator implements Comparator<BoardGame> {
+public class BoardGameByScoreComparator implements Comparator<BoardGame> {
 
     // zwracamy liczbe dodatnia jesli o1 jest wieksze od o2
     // zwracamy 0 jesli o1 jest rowne o2
@@ -11,12 +10,9 @@ public class BoardGameByPriceComparator implements Comparator<BoardGame> {
     @Override
     public int compare(BoardGame o1, BoardGame o2) {
 
-        /*
-        BigDecimal price1 = o1.getPrice();
-        BigDecimal price2 = o2.getPrice();
-        price1.compareTo(price2);
-        */
+        double score1 = o1.getScore();
+        double score2 = o2.getScore();
 
-        return o1.getPrice().compareTo(o2.getPrice());
+        return (int)(score1 - score2);
     }
 }
