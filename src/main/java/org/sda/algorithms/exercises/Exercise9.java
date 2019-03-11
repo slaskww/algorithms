@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 /**
  * @author marek.sobieraj
@@ -59,7 +60,7 @@ public class Exercise9 {
             System.out.println(silnia(numb));
         }
 
-        System.out.println("Wersja ze strumieniem"); //zroobic  wersje bez fora
+        System.out.println("Wersja z petlą strumieni"); //zrobic  wersje bez fora
 
 
         for (int i = 0; i < numbers.size(); i++) {
@@ -70,6 +71,18 @@ public class Exercise9 {
                     .ifPresent(System.out::println);
 
         }
+
+        System.out.println("Wersja ze strumieniem, bez pętli");
+
+      //  List<Integer> silnie =
+
+                numbers
+                .stream()
+                .peek(integer -> IntStream.range(1,  integer+1))
+                .reduce((left, right) -> left * right)
+                .map(integer -> "silnia" + integer)
+
+                .ifPresent(System.out::println);
 
 
 
