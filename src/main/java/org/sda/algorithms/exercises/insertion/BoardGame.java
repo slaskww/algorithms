@@ -47,7 +47,7 @@ public class BoardGame implements Comparable<BoardGame> {
     public int compareTo(BoardGame o) {
         int result = this.getPrice().compareTo(o.getPrice());
         if(result == 0){
-            return Double.compare(this.getScore(), o.getScore());
+            return Double.compare(this.getRank(), o.getRank());
         }
         return result;
     }

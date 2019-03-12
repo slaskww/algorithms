@@ -1,14 +1,16 @@
 package org.sda.algorithms.exercises;
 
+import java.math.BigDecimal;
+
 public class House {
 
     private int offerNumber;
-    private double price;
+    private BigDecimal price;
     private double size;
     private int rooms;
 
 
-    public House(int number ,double price, double size, int rooms) {
+    public House(int number ,BigDecimal price, double size, int rooms) {
         this.offerNumber = number;
         this.price = price;
         this.size = size;
@@ -19,7 +21,7 @@ public class House {
         return offerNumber;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
