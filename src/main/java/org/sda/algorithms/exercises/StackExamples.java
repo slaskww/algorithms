@@ -12,7 +12,7 @@ public class StackExamples {
         Cow cow = new Cow();
         String someString = "cos";
 
-        Stack<Animal> animalStack = new Stack<>();
+        Stack animalStack = new Stack();
         List<Animal> animals = new ArrayList<>();
 
         animalStack.push(cow);
