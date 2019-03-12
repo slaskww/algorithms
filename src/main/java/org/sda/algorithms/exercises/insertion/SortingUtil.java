@@ -1,3 +1,4 @@
+/*
 package org.sda.algorithms.exercises.insertion;
 
 import java.util.Comparator;
@@ -63,3 +64,4 @@ public class SortingUtil {
         }
     }
 }
+*/

@@ -5,74 +5,41 @@ import java.math.BigDecimal;
 public class BoardGame {
 
     private String name;
-
-    private double score;
-
+    private double rank;
     private BigDecimal price;
+    private int minPlayers;
+    private int maxPlayers;
 
-    private int minimalPlayers;
-
-    private int maximumPlayers;
-
-    public BoardGame() {
-    }
-
-    public BoardGame(String name, double score, BigDecimal price, int minimalPlayers, int maximumPlayers) {
+    public BoardGame(String name, double rank, BigDecimal price, int minPlayers, int maxPlayers) {
         this.name = name;
-        this.score = score;
+        this.rank = rank;
         this.price = price;
-        this.minimalPlayers = minimalPlayers;
-        this.maximumPlayers = maximumPlayers;
+        this.minPlayers = minPlayers;
+        this.maxPlayers = maxPlayers;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public double getScore() {
-        return score;
-    }
-
-    public void setScore(double score) {
-        this.score = score;
+    public double getRank() {
+        return rank;
     }
 
     public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
-        this.price = price;
+    public int getMinPlayers() {
+        return minPlayers;
     }
 
-    public int getMinimalPlayers() {
-        return minimalPlayers;
-    }
-
-    public void setMinimalPlayers(int minimalPlayers) {
-        this.minimalPlayers = minimalPlayers;
-    }
-
-    public int getMaximumPlayers() {
-        return maximumPlayers;
-    }
-
-    public void setMaximumPlayers(int maximumPlayers) {
-        this.maximumPlayers = maximumPlayers;
+    public int getMaxPlayers() {
+        return maxPlayers;
     }
 
     @Override
     public String toString() {
-        return "BoardGame{" +
-                "name='" + name + '\'' +
-                ", score=" + score +
-                ", price=" + price +
-                ", minimalPlayers=" + minimalPlayers +
-                ", maximumPlayers=" + maximumPlayers +
-                '}';
+        return  String.format("%-20s %7.2f %9.2f %8d %11d",name,rank ,price, minPlayers, maxPlayers);
     }
 }

@@ -6,6 +6,8 @@ import org.sda.algorithms.util.CalcTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 /**
  * @author marek.sobieraj
@@ -37,7 +39,51 @@ public class Exercise9 {
             }
         }
 
+
         CALC_TIME.start();
+
+        System.out.println();
+        System.out.println("Wersja z for");
+
+        for (Integer e : numbers) {
+
+            int silnia   =   1;
+            for (int i = 1; i <= e; i++) {
+                silnia *= i;
+            }
+            System.out.println(silnia);
+        }
+
+        System.out.println("Wersja z metodą silnia()");
+
+        for (Integer numb : numbers) {
+            System.out.println(silnia(numb));
+        }
+
+        System.out.println("Wersja z petlą strumieni"); //zrobic  wersje bez fora
+
+
+        for (int i = 0; i < numbers.size(); i++) {
+
+           IntStream
+                    .rangeClosed(1, numbers.get(i))
+                    .reduce((left, right) -> left * right)
+                    .ifPresent(System.out::println);
+
+        }
+
+        System.out.println("Wersja ze strumieniem, bez pętli");
+
+      //  List<Integer> silnie =
+
+                numbers
+                .stream()
+                .peek(integer -> IntStream.range(1,  integer+1))
+                .reduce((left, right) -> left * right)
+                .map(integer -> "silnia" + integer)
+
+                .ifPresent(System.out::println);
+
 
 
         CALC_TIME.stop();
@@ -45,7 +91,17 @@ public class Exercise9 {
     }
 
     private static long silnia(int value) {
-        return 0;
+        
+        int silnia;
+        if (value == 1) {
+            return  silnia = 1;
+        }
+        
+        else {
+
+            return value * silnia(value - 1) ;
+        }
+        
     }
 }
 

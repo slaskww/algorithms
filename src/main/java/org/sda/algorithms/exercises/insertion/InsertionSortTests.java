@@ -1,10 +1,12 @@
+/*
 package org.sda.algorithms.exercises.insertion;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class InsertionSortTests {
+*/
+/**//*
 
     public static void main(String[] args) {
 
@@ -32,9 +34,42 @@ public class InsertionSortTests {
         print(boardGames);
         System.out.println();
 
-
+        System.out.println("Po cenie");
         SortingUtil.insertionSort(boardGames, new BoardGameByPriceComparator());
+        print(boardGames);
+        System.out.println();
 
+        System.out.println("Po ocenie");
+        SortingUtil.insertionSort(boardGames, new BoardGameByScoreComparator());
+        print(boardGames);
+        System.out.println();
+
+
+        System.out.println("Po minimalnej liczbie graczy");
+        SortingUtil.insertionSort(boardGames, new Comparator<BoardGame>() {
+
+            @Override
+            public int compare(BoardGame o1, BoardGame o2) {
+                return o1.getMinimalPlayers() - o2.getMinimalPlayers();
+            }
+        });
+        print(boardGames);
+        System.out.println();
+
+        System.out.println("Po minimalnej liczbie graczy");
+        SortingUtil.insertionSort(boardGames, (o1, o2) -> o1.getMinimalPlayers() - o2.getMinimalPlayers());
+        print(boardGames);
+        System.out.println();
+
+
+        Comparator<BoardGame> boardGameComparator = new BoardGameByPriceComparator();
+        int result = boardGameComparator.compare(boardGames.get(0),boardGames.get(0));
+        System.out.println(result);
+
+        result = boardGameComparator.compare(boardGames.get(0),boardGames.get(1));
+        System.out.println(result);
+
+        Collections.sort(boardGames, new BoardGameByPriceComparator());
     }
 
     public static void print(List<BoardGame> boardGames){
@@ -44,3 +79,4 @@ public class InsertionSortTests {
         }
     }
 }
+*/
