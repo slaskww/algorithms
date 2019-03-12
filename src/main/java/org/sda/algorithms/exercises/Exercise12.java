@@ -16,7 +16,7 @@ import java.util.stream.*;
 ///ctrl shift n
 public class Exercise12 {
 
-    public static List<BoardGame> GAMES = Arrays.asList(
+    public final static List<BoardGame> GAMES = Arrays.asList(
             new BoardGame("Terraforming Mars", 8.38, new BigDecimal("123.49"), 1, 5),
             new BoardGame("Codenames", 7.82, new BigDecimal("64.95"), 2, 8),
             new BoardGame("Puerto Rico", 8.07, new BigDecimal("149.99"), 2, 5),

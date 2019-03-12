@@ -91,17 +91,17 @@ public class Exercise9 {
     }
 
     private static long silnia(int value) {
-        
+
         int silnia;
         if (value == 1) {
             return  silnia = 1;
         }
-        
+
         else {
 
             return value * silnia(value - 1) ;
         }
-        
+
     }
 }
 

@@ -1,5 +1,6 @@
 package org.sda.algorithms.otomoto;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,22 +10,26 @@ public class Shop {
 
         List<Car> cars = new ArrayList<>();
 
-       /* Address address  =  new Address("Wiejska","55-435", "Wroclaw", "13/12");
-        Owner owner = new Owner("Jan", "Noga", address);
-        Car car = new Car("9000", "green", "C-01", "Toyota", true, owner);
+        Address address = new Address("Długa","50-456","Wrocław","13/12");
+        Owner owner = new Owner("Jan","Dzban",address);
+        Car car = new Car(new BigDecimal("90000"),"czerwony","C-90","Volvo", true, owner);
 
         cars.add(car);
 
         String cityResult = cars.get(0).getOwner().getAddress().getCity();
 
-        Car someCars = cars.get(0);
-        Owner someOwner = someCars.getOwner();
+        Car someCar = cars.get(0);
+        Owner someOwner = someCar.getOwner();
         Address someAddress = someOwner.getAddress();
         String someCity = someAddress.getCity();
+        String somePostalCode = someAddress.getPostalCode();
 
-*/
-
-
+        cars.stream()
+                .filter(Shop::isCarInWroclaw)
+                .forEach(System.out::println);
     }
 
+    private static boolean isCarInWroclaw(Car car1) {
+        return car1.getOwner().getAddress().getCity().equals("Wrocław");
+    }
 }
