@@ -22,7 +22,8 @@ public class SortHouses {
                     (i + 1),
                     BigDecimal.valueOf(100 + rand.nextInt(333)),
                     40 + rand.nextInt(135),
-                    3 + rand.nextInt(8)));
+                    3 + rand.nextInt(8),
+                    rand.nextBoolean()));
         }
 
         System.out.println("Before bubbleSort():");
@@ -31,7 +32,7 @@ public class SortHouses {
 
         for (int i = 0; i < 4; i++) {
 
-            System.out.println("Sort by: \ni - id\np - price\ns - size\nr - rooms");
+            System.out.println("Sort by: \ni - id\np - price\ns - size\nr - rooms\ng - garage");
             String c = input.nextLine();
 
             System.out.println("After bubbleSort():");
@@ -49,14 +50,16 @@ public class SortHouses {
         String price = "price";
         String size = "size(m2)";
         String rooms = "rooms";
-        System.out.println(String.format("%10s %9s %12s %8s", id, price, size, rooms));
+        String garage = "isGarage";
+
+        System.out.println(String.format("%10s %9s %12s %8s %10s", id, price, size, rooms,  garage));
     }
 
     public static void sortByChosen(ArrayList<House> list, String cr){
 
         switch(cr){
 
-            case "i" : sortBubble(list, Comparator.comparing(House::getOfferNumber)); // sposob 1: korzystamy z metody comparing() z interfejsu Comparator i referencji do metody (przy użyciu operatora ::)
+            case "i" : sortBubble(list, Comparator.comparingInt(House::getOfferNumber).th); // sposob 1: korzystamy z metody comparing() z interfejsu Comparator i referencji do metody (przy użyciu operatora ::)
                 break;
 
             case "p" : sortBubble(list, Comparator.comparing(house -> house.getPrice())); //sposob 2: korzystamy z metody comparing() z interfejsu Comparator i i Lambdy i odwolujemy sie do metody z klasy House
@@ -65,7 +68,12 @@ public class SortHouses {
             case "s" : sortBubble(list, (o1, o2) -> Double.compare(o1.getSize(), o2.getSize())); // sposob 3: porownujemy pola przy pomocy met.compare z 'wrappera' Double
                 break;
 
-            case "r" : sortBubble(list,(o1, o2) -> o1.getRooms() - o2.getRooms() );
+           // case "r" : Collections.sort(list, (o1, o2) -> Integer.compare(o1.getRooms(), o2.getRooms())); //skorzystalismy z metody sort z kl. Collections z bibl java.util
+            case "r" : Collections.sort(list,Comparator.comparing(House::getRooms));
+                break;
+
+          //  case "g" : list.sort((o1, o2) -> Boolean.compare(o1.isGarage(), o2.isGarage())); // tu korzystamy  z metody sort dostępnej bezpośrednio w interfejsie List – jest to alternatywa dla metody Collections.sort, która jako argument przyjmuje właśnie klasę typu Comparator:
+            case "g" : list.sort(Comparator.comparing(House::isGarage).reversed());
                 break;
 
             default:    System.out.println("Nie ma takiego kryterium.");
