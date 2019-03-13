@@ -3,15 +3,14 @@ package org.sda.algorithms.exercises;
 import org.sda.algorithms.exercises.insertion.BoardGame;
 import org.sda.algorithms.exercises.insertion.BoardGameByPriceComparator;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.math.BigDecimal;
 import java.util.*;
-import java.util.regex.Pattern;
-import java.util.stream.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Exercise12 {
 
+    // zmienna GAMES to lista ze wszystkimi grami
     public final static List<BoardGame> GAMES = Arrays.asList(
             new BoardGame("Terraforming Mars", 8.38, new BigDecimal("123.49"), 1, 5),
             new BoardGame("Codenames", 7.82, new BigDecimal("64.95"), 2, 8),
@@ -46,10 +45,11 @@ public class Exercise12 {
         }
 
         // Przykład od prowadzącego
-
+        // tworzymy strumien
         List<BoardGame> games = GAMES.stream()
-                .filter(boardGame -> boardGame.getMaximumPlayers() > 4)
+                .filter(boardGame -> boardGame.getMaximumPlayers() > 4) //filtrujemy obiekty w strumieniu
                 .filter(boardGame -> boardGame.getScore() > 8)
+                // cena gry w porównaniu do 150 musi byc mniejsza wiec comaparator ma zwrocic mniej niz 0
                 .filter(boardGame -> boardGame.getPrice().compareTo(new BigDecimal("150")) < 0)
                 .collect(Collectors.toList());
 
@@ -58,6 +58,7 @@ public class Exercise12 {
             System.out.println(game.toString());
         }
 
+        // strumien mozemy zapisac w kilku etapach
         Stream<BoardGame> boardGameStream = GAMES.stream();
         Stream<BoardGame> onlyForMoteThan4Players = boardGameStream.filter(boardGame -> boardGame.getMaximumPlayers() > 4);
         System.out.println();
@@ -84,6 +85,9 @@ public class Exercise12 {
 
         // 2. Posortuj gry wg ceny
 
+        // wszystkie sposby daja nam ten sam efekt - porwanie gier po cenie
+        // mozemy uzyc gotowego comparatora lub stworzyc go za pomoca lmbdy lub klasy anoniowej
+
         System.out.println();
         System.out.println("Posortuj gry wg ceny");
         GAMES.stream()
@@ -106,12 +110,16 @@ public class Exercise12 {
 
         // 3. Wypisz najtańszą gry
 
+        // sortujemy od najtanszej do najdrozszej i wybieramy pierwsza
+
         System.out.println("Wypisz najtańszą gry");
         GAMES.stream()
                 .sorted((o1, o2) -> o1.getPrice().compareTo(o2.getPrice()))
                 .limit(1)
                 .forEach(System.out::println);
 
+
+        // lub korzystamy z funkcji min
         System.out.println();
         BoardGame boardGameX = GAMES.stream()
                 .min((o1, o2) -> o1.getPrice().compareTo(o2.getPrice()))
@@ -137,6 +145,7 @@ public class Exercise12 {
                 .ifPresent(System.out::println);
 
         // sortujemy malejaco i wyboeramy pierwszy element z strumienia
+        // zwróc uwagę, że komparator jest podobny do tego z zadania nr. 3 ale obiekty sa porownywane na odwrot
         GAMES.stream()
                 .sorted((o1, o2) -> o2.getPrice().compareTo(o1.getPrice()))
                 .limit(1)
@@ -165,7 +174,8 @@ public class Exercise12 {
         System.out.println();
 
         // 6. Wypisz kwotę do zapłaty za wszystkie gry po jednej sztuce (suma)
-
+        // metoda reduce mówi jak mają byc redukowane elementy
+        // mówimy jak z dwóch elementów danego typu stworzyc jeden obiekt np. poprzez dodawanie jesli sa to liczby
         System.out.println("Wypisz kwotę do zapłaty za wszystkie gry po jednej sztuce (suma)");
         GAMES.stream()
                 .map(boardGame -> boardGame.getPrice())
