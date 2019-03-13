@@ -59,7 +59,7 @@ public class SortHouses {
 
         switch(cr){
 
-            case "i" : sortBubble(list, Comparator.comparingInt(House::getOfferNumber).th); // sposob 1: korzystamy z metody comparing() z interfejsu Comparator i referencji do metody (przy użyciu operatora ::)
+            case "i" : sortBubble(list, Comparator.comparingInt(House::getOfferNumber)); // sposob 1: korzystamy z metody comparing() z interfejsu Comparator i referencji do metody (przy użyciu operatora ::)
                 break;
 
             case "p" : sortBubble(list, Comparator.comparing(house -> house.getPrice())); //sposob 2: korzystamy z metody comparing() z interfejsu Comparator i i Lambdy i odwolujemy sie do metody z klasy House
