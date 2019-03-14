@@ -31,8 +31,8 @@ public class Sandbox {
         Stream<BigDecimal> gamesPrices =
                 GAMES
                 .stream()
-                .map(getPricesOfGames)
-             //   .forEach(System.out::println);//nie mozna tutaj uzyc foreacha zwracajacego voida. Strumien na wyjsciu ma dac BigDecimale
+                .map(getPricesOfGames);
+             //  .forEach(System.out::println);//nie mozna tutaj uzyc foreacha zwracajacego voida. Strumien na wyjsciu ma dac BigDecimale
 
 
         gamesPrices.forEach(System.out::println);//tutaj juz mozna skorzystac z foreacha
